@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      .no-scroll {
+        overflow: hidden;
+      }
+
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+    </style>
+<style>
+  body.lock-scroll {
+    overflow: hidden;
+  }
+</style>
+
+  </head>
+  <body class="bg-gray-50 text-gray-950 overflow-x-hidden relative">
+    <!-- Header -->
+    <header id="mainHeader" class="sticky top-0 left-0 w-full z-50 bg-gray-50/90 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="/assets/images/logo.webp" alt="Studio logo" class="h-8">
+        </div>
+        <nav class="hidden md:flex flex-grow justify-center space-x-8 text-sm font-medium items-center">
+          <button id="servicesToggle" class="text-gray-950 hover:underline flex items-center gap-1">
+            Szolgáltatások
+            <svg id="chevronIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <a href="#" class="text-gray-950 hover:underline">Névjegy</a>
+          <a href="#" class="text-gray-950 hover:underline">Blog</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="bg-blue-100 text-black px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 hidden md:inline">Kapcsolatfelvétel</a>
+          <button id="mobileMenuToggle" class="md:hidden text-gray-950 focus:outline-none">
+            <svg id="hamburgerIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Smooth Services dropdown -->
+    <div id="servicesMenu" class="sticky top-[4rem] w-full overflow-hidden bg-gray-50/90 backdrop-blur-md z-40 max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-950 text-center pt-12 pb-10">
+        <div class="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6 lg:gap-8 text-lg font-semibold mb-6">
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Digitális stratégia</a>
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Arculattervezés</a>
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Weboldalkészítés</a>
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Online marketing</a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-950">
+          <a href="#" class="hover:text-gray-600">Weboldalelemzés</a>
+          <a href="#" class="hover:text-gray-600">Technikai tanácsadás</a>
+          <a href="#" class="hover:text-gray-600">Keresőoptimalizálás</a>
+          <a href="#" class="hover:text-gray-600">Automatizálás | AI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div id="mobileOverlay" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden"></div>
+    <div id="mobileMenu" class="fixed top-[4rem] right-0 h-[calc(100%-4rem)] w-72 bg-gray-50/90 backdrop-blur-md text-gray-950 z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col space-y-6">
+      <a href="#" class="bg-blue-100 text-black px-4 py-2 rounded-full text-sm font-medium">Kapcsolatfelvétel</a>
+      <div>
+        <div class="flex flex-col space-y-4">
+          <a href="#" class="text-gray-950">Digitális stratégia</a>
+          <a href="#" class="text-gray-950">Arculattervezés</a>
+          <a href="#" class="text-gray-950">Weboldalkészítés</a>
+          <a href="#" class="text-gray-950">Online marketing</a>
+        </div>
+        <div class="mt-6 text-sm text-gray-600 flex flex-col space-y-2">
+          <a href="#" class="hover:text-gray-800">Weboldalelemzés</a>
+          <a href="#" class="hover:text-gray-800">Technikai tanácsadás</a>
+          <a href="#" class="hover:text-gray-800">Keresőoptimalizálás</a>
+          <a href="#" class="hover:text-gray-800">Automatizálás | AI</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-6">
+        <a href="#" class="text-gray-950 block mb-2">Névjegy</a>
+        <a href="#" class="text-gray-950 block">Blog</a>
+      </div>
+    </div>
+
+    <!-- Hero Section ----------------->
+    <section id="heroSection" class="relative z-20 bg-white text-gray-900 pt-32 pb-32 px-4 sm:px-6 lg:px-8 rounded-t-[3rem] transition-all duration-500 ease-in-out">
+      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover -z-10 rounded-t-[3rem]">
+        <source src="/assets/3664353901-preview.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-[#f3f3f3]/50 backdrop-blur-sm -z-10 rounded-t-[3rem]"></div>
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(240,240,240,0.6)_0%,transparent_70%)] rounded-t-[3rem]"></div>
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-8">
+          <span class="uppercase border-b-4 border-[#ebaf73] pb-1 mb-2 inline-block">Garantált</span><br>ügyfélszerzés, modern digitális megoldásokkal
+        </h1>
+        <h2 class="text-lg text-gray-900 max-w-2xl mx-auto">
+          Teljes körü online marketing, arculat- és webes alkalmazásfejlesztés szolgáltatás alapú vállalkozásoknak
+        </h2>
+      </div>
+    </section>
+
+    <!-- Bemutatkozó szekció ------------------->
+    <section class="relative z-10 bg-gradient-to-b from-white to-gray-200 text-gray-950 px-4 sm:px-6 lg:px-8 py-24">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+        <!-- Jobb oldal (kerül felülre kis képernyőn) -->
+        <div class="order-1 md:order-2 flex flex-col self-start">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            <span class="text-black">"a cél a <span class="italic font-bold">teljesség</span>"</span>
+          </h2>
+          <p class="text-lg leading-relaxed mb-10 text-justify">
+            Ahhoz, hogy valami igazán működjön, rendszerben kell gondolkodni. Legyen szó a teljes online jelenlétünkről, vagy egy ügyfélszerző kampányról. <br><strong>A siker a részleteken múlik!</strong>
+          </p>
+          <a href="#"
+            class="inline-block px-10 py-4 border border-black rounded-full text-lg font-medium hover:bg-gray-100 transition-all duration-300 text-center">
+            bővebben
+          </a>
+        </div>
+
+        <!-- Bal oldal (kerül alulra kis képernyőn) -->
+        <div class="order-2 md:order-1 flex flex-col self-start">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            <span class="italic font-bold text-black">mit</span> fogunk csinálni?
+          </h2>
+          <p class="text-lg leading-relaxed mb-10 text-justify">
+            Röviden:<br>
+            Online rendszereket építünk, amik pénzt termelnek a vállalkozásodnak.<br><br>
+            Letisztult, felhasználóbarát weboldalak,<br>
+            értékesítést támogató marketing rendszerek,<br>
+            erős, hiteles vizuális arculat.
+            <br><strong>Minden ami számít, <span class="italic text-1xl">egy helyen, egy kézben!</span></strong>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SZOLGÁLTATÁSOK VÉGLEGES ----------------------->
+    <section class="bg-gray-200 px-4 sm:px-6 lg:px-8 py-24 text-gray-950">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+
+        <!-- Jobb oszlop – szolgáltatáslista -->
+        <div class="order-1 lg:order-2 flex flex-col justify-between py-6">
+          <div class="flex flex-col justify-between h-full">
+            <!-- Fejléc -->
+            <div class="space-y-8">
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">Megoldások elejétől a végéig</h2>
+
+              <!-- Lista -->
+              <div class="space-y-8">
+                <div class="border-l border-gray-300 pl-4">
+                  <h3 class="font-semibold text-lg">Digitális stratégia</h3>
+                  <h4 class="text-gray-700">Kezdésképp megtervezzük a teljes kommunikációdat és az ügyfeleid pontos elérésének a módját</h4>
+                </div>
+                <div class="border-l border-gray-300 pl-4">
+                  <h3 class="font-semibold text-lg">Arculattervezés</h3>
+                  <h4 class="text-gray-700">Ezután kialakítjuk azt a minőségi megjelenést, ami maximálisan tudja képviselni cégedet online és offline is</h4>
+                </div>
+                <div class="border-l border-gray-300 pl-4">
+                  <h3 class="font-semibold text-lg">Weboldalkészítés</h3>
+                  <h4 class="text-gray-700">A következő lépésben elkészül a weboldal, ahol a vásárlóid elérhetik szolgáltatásaidat. Alapvetően minden honlap a legfrissebb technológiákat alkalmazva, kódszinten épül fel</h4>
+                </div>
+                <div class="border-l border-gray-300 pl-4">
+                  <h3 class="font-semibold text-lg">Online marketing</h3>
+                  <h4 class="text-gray-700">Végezetül mindent bevetünk a maximális konverzióért</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bal oszlop – maszkolt kép + gomb -->
+        <div class="order-2 lg:order-1 flex flex-col justify-between py-6">
+          <div class="w-full max-w-[600px] mx-auto flex flex-col h-full">
+            <!-- Kép -->
+    <div class="relative w-full max-w-[600px] mx-auto">
+    <svg viewBox="0 0 655 480" class="w-full h-auto">
+      <defs>
+        <clipPath id="service-mask" clipPathUnits="userSpaceOnUse">
+          <rect x="0" y="0" stroke="#000000" stroke-miterlimit="10" width="108" height="450"/>
+                <rect x="121.5" y="25.5" stroke="#000000" stroke-miterlimit="10" width="55" height="405"/>
+                <rect x="192.5" y="9.5" stroke="#000000" stroke-miterlimit="10" width="60" height="434"/>
+                <rect x="271.5" y="44.5" stroke="#000000" stroke-miterlimit="10" width="63" height="376"/>
+                <rect x="349.5" y="25.5" stroke="#000000" stroke-miterlimit="10" width="208" height="397"/>
+                <rect x="574.5" y="44.5" stroke="#000000" stroke-miterlimit="10" width="60" height="396"/>
+                <rect x="644.5" y="9.5" stroke="#000000" stroke-miterlimit="10" width="68" height="421"/>
+                <rect x="736.5" y="18.5" stroke="#000000" stroke-miterlimit="10" width="49" height="412"/>
+        </clipPath>
+      </defs>
+
+      <!-- Képek maszkolva -->
+      <image class="masked-image opacity-100 transition-opacity duration-1000 absolute top-0 left-0"
+            href="/assets/images/weboldalkeszites.webp"
+            width="655" height="480"
+            clip-path="url(#service-mask)" />
+
+      <image class="masked-image opacity-0 transition-opacity duration-1000 absolute top-0 left-0"
+            href="/assets/images/seoestartalom.webp"
+            width="655" height="480"
+            clip-path="url(#service-mask)" />
+
+      <image class="masked-image opacity-0 transition-opacity duration-1000 absolute top-0 left-0"
+            href="/assets/images/technikaitanacsadas.webp"
+            width="655" height="480"
+            clip-path="url(#service-mask)" />
+    </svg>
+
+
+      
+
+      <!-- Jelzőcsík -->
+      <div class="flex justify-center mt-4 gap-2">
+        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300 active-indicator"></div>
+        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300"></div>
+        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300"></div>
+      </div>
+    </div>
+
+
+    <script>
+      const images = document.querySelectorAll('.masked-image');
+      const indicators = document.querySelectorAll('.active-indicator, .active-indicator ~ div');
+      let current = 0;
+
+      function showNextImage() {
+        images[current].classList.remove('opacity-100');
+        images[current].classList.add('opacity-0');
+        indicators[current].classList.remove('bg-black');
+        indicators[current].classList.add('bg-gray-300');
+
+        current = (current + 1) % images.length;
+
+        images[current].classList.remove('opacity-0');
+        images[current].classList.add('opacity-100');
+        indicators[current].classList.add('bg-black');
+        indicators[current].classList.remove('bg-gray-300');
+      }
+
+      // Indikátor első beállítás
+      indicators[0].classList.add('bg-black');
+      indicators[0].classList.remove('bg-gray-300');
+
+      // Indítás
+      setInterval(showNextImage, 4000);
+    </script>
+
+
+
+            <!-- Gomb -->
+            <div class="mt-8">
+              <a href="#"
+                class="block w-full px-10 py-4 border border-black rounded-full text-lg font-medium hover:bg-gray-100 transition-all duration-300 text-center">
+                bővebben
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!--CHAT ANALYSIS SZEKCIÓ--------------------->
+    <section id="bgk-tab-switcher" class="relative bg-gradient-to-b from-gray-200 to-[#2867a2] pt-0 mt-[-6rem]">
+      <div class="h-[400vh] relative">
+        <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+          <div class="relative w-full max-w-xl md:max-w-2xl h-[400px]">
+
+            <!-- 1. buborék (jobbra, kék) -->
+            <div class="tab-panel absolute inset-0 flex items-center justify-center">
+              <div class="relative bg-[#007aff] text-white rounded-2xl px-6 py-4 max-w-sm md:max-w-md shadow-lg
+                after:content-[''] after:absolute after:bottom-3 after:right-[-10px]
+                after:border-t-8 after:border-t-transparent
+                after:border-l-8 after:border-l-[#007aff]
+                after:border-b-8 after:border-b-transparent">
+                <p class="text-base md:text-lg font-medium">Van már weboldalad?</p>
+                <p class="text-sm md:text-base mt-2">Kíváncsi vagyok, mennyire vagy jelen online</p>
+              </div>
+            </div>
+
+            <!-- 2. buborék (balra, szürke) -->
+            <div class="tab-panel absolute inset-0 flex items-center justify-center">
+              <div class="relative bg-gray-200 text-gray-800 rounded-2xl px-6 py-4 max-w-sm md:max-w-md shadow-lg
+                after:content-[''] after:absolute after:bottom-3 after:left-[-10px]
+                after:border-t-8 after:border-t-transparent
+                after:border-r-8 after:border-r-gray-200
+                after:border-b-8 after:border-b-transparent">
+                <p class="text-base md:text-lg font-medium">Igen, van!</p>
+                <p class="text-sm md:text-base mt-2">Jól működik, hozza a vevőket, nincs panasz</p>
+              </div>
+            </div>
+
+            <!-- 3. buborék (jobbra, kék + CTA) -->
+            <div class="tab-panel absolute inset-0 flex items-center justify-center">
+              <div class="relative bg-[#007aff] text-white rounded-2xl px-6 py-4 max-w-sm md:max-w-md shadow-lg
+                after:content-[''] after:absolute after:bottom-3 after:right-[-10px]
+                after:border-t-8 after:border-t-transparent
+                after:border-l-8 after:border-l-[#007aff]
+                after:border-b-8 after:border-b-transparent">
+                <h2 class="text-lg md:text-xl font-semibold mb-2">Ez szuper, de menjünk biztosra!</h2>
+                <p class="text-sm md:text-base mb-3">Egy gyors átfogó elemzéssel pontosan megmutatom, hol veszíthetsz el érdeklődőket anélkül, hogy tudnál róla <br>Érdekel?</p>
+                <button class="mt-2 bg-white text-[#007aff] font-semibold px-4 py-2 rounded-full hover:bg-blue-100 transition">
+                  Naná! →
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--SUBSERVICES----------------->
+    <section id="timeline" class="relative bg-[#2867a2] py-24 px-4 sm:px-6 lg:px-8 text-white">
+      <div class="max-w-7xl mx-auto relative">
+
+        <!-- Fekete középvonal -->
+        <div class="hidden md:block absolute top-0 bottom-0 left-1/2 w-[2px] bg-black z-0"></div>
+
+        <!-- Blokkok konténer -->
+        <div class="space-y-24">
+
+          <!-- 1. blokk -->
+          <div class="grid md:grid-cols-2 items-center gap-12 relative z-10">
+            <!-- Kép balra -->
+            <div class="timeline-img hidden md:block opacity-0 translate-x-[-50px]">
+              <img src="/assets/images/weboldalkeszites.webp" alt="Weboldal készítés" class="rounded-xl shadow-xl">
+            </div>
+            <!-- Szöveg jobbra -->
+            <div class="timeline-text opacity-0 translate-x-[50px]">
+              <h3 class="text-2xl font-bold mb-4">Technikai tanácsadás</h3>
+              <p class="text-lg leading-relaxed">Segítünk átlátni, hogy mi hogyan működik a háttérben: tárhely, domain, weboldal, e-mail, DNS, Google, biztonság, gyorsaság — mindaz, amitől egy online rendszer stabil és megbízható lesz. Akkor is, ha nem vagy kocka.</p>
+            </div>
+            <!-- Mobil: szöveg + kép -->
+            <div class="md:hidden space-y-4">
+              <div class="timeline-img-mobile opacity-0 translate-y-[50px]">
+                <img src="/assets/images/weboldalkeszites.webp" class="rounded-xl shadow-xl" alt="">
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. blokk -->
+          <div class="grid md:grid-cols-2 items-center gap-12 relative z-10">
+            <!-- Szöveg balra -->
+            <div class="timeline-text opacity-0 translate-x-[-50px]">
+              <h3 class="text-2xl font-bold mb-4">Keresőoptimalizálás</h3>
+              <p class="text-lg leading-relaxed">Technikai és tartalmi SEO egyben: gyors betöltés, reszponzivitás, Google-barát szerkezet, kulcsszókutatás, szövegírás, meta adatok és keresőbarát struktúra. A cél: első oldalas megjelenés, több organikus forgalom.</p>
+            </div>
+            <!-- Kép jobbra -->
+            <div class="timeline-img hidden md:block opacity-0 translate-x-[50px]">
+              <img src="/assets/images/seoestartalom.webp" alt="Struktúra" class="rounded-xl shadow-xl">
+            </div>
+            <!-- Mobil -->
+            <div class="md:hidden space-y-4">
+              <div class="timeline-img-mobile opacity-0 translate-y-[50px]">
+                <img src="/assets/images/seoestartalom.webp" class="rounded-xl shadow-xl" alt="">
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. blokk -->
+          <div class="grid md:grid-cols-2 items-center gap-12 relative z-10">
+            <!-- Kép balra -->
+            <div class="timeline-img hidden md:block opacity-0 translate-x-[-50px]">
+              <img src="/assets/images/technikaitanacsadas.webp" alt="Tanácsadás" class="rounded-xl shadow-xl">
+            </div>
+            <!-- Szöveg jobbra -->
+            <div class="timeline-text opacity-0 translate-x-[50px]">
+              <h3 class="text-2xl font-bold mb-4">Automatizálás | AI</h3>
+              <p class="text-lg leading-relaxed">Automatizáljuk a monoton, időrabló folyamatokat – űrlapok, e-mailek, CRM, naptár, számlázás, chatbot. Ha kell, mesterséges intelligenciával turbózva. Te csak a fontos döntésekre koncentrálj, a rendszer elvégzi a többit.</p>
+            </div>
+            <!-- Mobil -->
+            <div class="md:hidden space-y-4">
+              <div class="timeline-img-mobile opacity-0 translate-y-[50px]">
+                <img src="/assets/images/technikaitanacsadas.webp" class="rounded-xl shadow-xl" alt="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!--REFERENCIAK---------------------->
+    <section id="ref-gallery" class="bg-gradient-to-b from-[#2867a2] to-white py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <!-- Sor 1 -->
+        <div class="flex justify-center gap-20 transform translate-x-[-20px] ref-row">
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+        </div>
+
+        <!-- Sor 2 -->
+        <div class="flex justify-center gap-20 transform translate-x-[20px] ref-row">
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+        </div>
+
+        <!-- Sor 3 -->
+        <div class="flex justify-center gap-20 transform translate-x-[-20px] ref-row">
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+        </div>
+
+        <!-- Sor 4 -->
+        <div class="flex justify-center gap-20 transform translate-x-[20px] ref-row">
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+          <img src="/assets/images/ref1.webp" class="ref-tile w-50 h-40 rounded-xl shadow-xl object-cover transition-transform duration-300 ease-out" />
+        </div>
+
+      </div>
+    </section>
+
+    <!--CSOMAGAJANLATOK------------------->
+    <section id="packages" class="bg-gradient-to-b from-white to-gray-200 py-24 px-4 sm:px-6 lg:px-8 text-gray-950">
+      <div class="max-w-7xl mx-auto text-center mb-16">
+        <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Nem tudod, hol kezdjünk?</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ezért hoztuk létre az előre összeállított csomagokat – attól függően, hogy mennyire szeretnéd kiszervezni az online jelenléted.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+        <!-- START csomag -->
+        <div class="border border-gray-200 rounded-2xl shadow-xl p-8 flex flex-col justify-between bg-neutral-50 hover:shadow-2xl transition">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Start</h3>
+            <p class="text-gray-600 mb-6">Ha még csak most indulsz, és az alapokat szeretnéd stabilan lefektetni.</p>
+            <ul class="text-left space-y-3 text-sm">
+              <li>✅ Konzultáció és célfeltárás</li>
+              <li>✅ Egylapos bemutatkozó weboldal</li>
+              <li>✅ Saját domain + tárhely beállítás</li>
+              <li>✅ Alap arculat (színek, betűtípusok, logóhely)</li>
+              <li>✅ Kapcsolatfelvételi űrlap</li>
+              <li>✅ Mobilra optimalizálás</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-8 inline-block bg-black text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-gray-800 transition">Ez érdekel</a>
+        </div>
+
+        <!-- PROFI csomag -->
+        <div class="border-4 border-[#007aff] rounded-2xl shadow-2xl p-8 flex flex-col justify-between bg-white hover:shadow-3xl transition relative">
+          <div>
+            <div class="absolute -top-4 right-4 bg-[#007aff] text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">Legnépszerűbb</div>
+            <h3 class="text-2xl font-bold mb-4">Profi</h3>
+            <p class="text-gray-600 mb-6">Már működsz, de kell a szintlépés és a tudatos online jelenlét.</p>
+            <ul class="text-left space-y-3 text-sm">
+              <li>✅ Minden a Start csomagból</li>
+              <li>✅ Többoldalas, egyedi weboldal</li>
+              <li>✅ Keresőoptimalizálási alapbeállítások (SEO)</li>
+              <li>✅ Weboldal elemzés + tartalomstruktúra</li>
+              <li>✅ Egyedi arculat és képi világ</li>
+              <li>✅ Alap analitika beépítés</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-8 inline-block bg-[#007aff] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-blue-600 transition">Ez érdekel</a>
+        </div>
+
+        <!-- KOMPLEX csomag -->
+        <div class="border border-gray-200 rounded-2xl shadow-xl p-8 flex flex-col justify-between bg-neutral-50 hover:shadow-2xl transition">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Komplex</h3>
+            <p class="text-gray-600 mb-6">Ha mindent ránk bíznál: a stratégiától az automatizálásig.</p>
+            <ul class="text-left space-y-3 text-sm">
+              <li>✅ Minden a Profi csomagból</li>
+              <li>✅ Teljes digitális stratégia (audit + tervezés)</li>
+              <li>✅ Automatizált ügyfélkezelés (CRM, űrlapok, e-mail)</li>
+              <li>✅ AI-alapú tartalomsegítség és chatbot opció</li>
+              <li>✅ Google és Meta hirdetési fiók beállítás</li>
+              <li>✅ Teljes rendszer összekötés + betanítás</li>
+            </ul>
+          </div>
+          <a href="#contact" class="mt-8 inline-block bg-black text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-gray-800 transition">Ez érdekel</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!--PARALLAX CTA------------------------>
+    <section class="relative bg-fixed bg-center bg-cover text-white" style="background-image: url('/assets/images/parallax-cta.webp');">
+      <div class="bg-black/60 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug">
+            Egyedi elképzelésed van?<br>Segítek megvalósítani!
+          </h2>
+          <a href="#contact" class="mt-4 inline-block bg-white text-black px-6 py-3 rounded-full text-base font-medium hover:bg-gray-200 transition">
+            Kérj visszahívást →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!--CONTACT------------------------------->
+    <section id="contact" class="relative z-10 bg-gradient-to-b from-gray-200 to-white text-gray-950 px-4 sm:px-6 lg:px-8 py-24">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="section-title" style="color:#ebaf73">Dolgozzunk együtt!</h2>
+        <p class="mt-2 text-lg text-gray-600">
+          Írd meg, miben segíthetek! Legyen az egyedi weboldal, online stratégia vagy technikai tanácsadás. 24 órán belül válaszolok.
+        </p>
+      </div>
+
+      <form action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+
+          <!-- Szolgáltatás mező -->
+          <div class="sm:col-span-2">
+            <label for="service" class="block text-base font-semibold text-gray-900 mb-1">Milyen szolgáltatás érdekel?</label>
+            <input id="service" name="service" type="text" placeholder="Pl.: Weboldalkészítés" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
+          </div>
+
+          <!-- Név -->
+          <div>
+            <label for="first-name" class="block text-sm font-semibold text-gray-900">Vezetéknév*</label>
+            <input id="first-name" name="first-name" type="text" required autocomplete="family-name" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
+          </div>
+
+          <div>
+            <label for="last-name" class="block text-sm font-semibold text-gray-900">Keresztnév*</label>
+            <input id="last-name" name="last-name" type="text" required autocomplete="given-name" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
+          </div>
+
+          <!-- Cégnév -->
+          <div class="sm:col-span-2">
+            <label for="company" class="block text-sm font-semibold text-gray-900">Cégnév <span class="text-gray-500 text-sm">(opcionális)</span></label>
+            <input id="company" name="company" type="text" autocomplete="organization" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
+          </div>
+
+          <!-- E-mail -->
+          <div class="sm:col-span-2">
+            <label for="email" class="block text-sm font-semibold text-gray-900">Email*</label>
+            <input id="email" name="email" type="email" required autocomplete="email" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
+          </div>
+
+          <!-- Telefonszám -->
+          <div class="sm:col-span-2">
+            <label for="phone-number" class="block text-sm font-semibold text-gray-900">Telefonszám</label>
+            <input id="phone-number" name="phone-number" type="text" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
+          </div>
+
+          <!-- Üzenet -->
+          <div class="sm:col-span-2">
+            <label for="message" class="block text-sm font-semibold text-gray-900">Üzenet*</label>
+            <textarea id="message" name="message" rows="4" required class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]"></textarea>
+          </div>
+
+          <!-- Figyelmeztetés -->
+          <div class="sm:col-span-2">
+            <p class="text-sm text-gray-500">A *-gal jelölt mezők kitöltése kötelező.</p>
+          </div>
+
+          <!-- GDPR -->
+          <div class="flex items-center gap-x-4 sm:col-span-2">
+            <label for="agree-to-policies" class="relative inline-flex h-6 w-11 items-center cursor-pointer">
+              <input id="agree-to-policies" name="agree-to-policies" type="checkbox" class="peer sr-only" required>
+              <div class="w-full h-full rounded-full bg-gray-400 peer-checked:bg-[#2867a2] transition-colors duration-300"></div>
+              <span class="absolute left-1 top-1 size-4 rounded-full bg-white shadow ring-1 ring-gray-900/5 transition-transform duration-300 transform peer-checked:translate-x-5"></span>
+            </label>
+            <p class="text-sm text-gray-600">
+              Elfogadom az <a href="/adatkezelesi-tajekoztato.html" target="_blank" class="font-semibold text-[#2867a2] underline">Adatkezelési Tájékoztatót</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10">
+          <button type="submit" class="bg-[#ebaf73] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e49b50] transition">
+            Üzenet küldése →
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!--BLOG--------------------------->
+    <section id="blog" class="relative z-10 bg-white text-gray-950 px-4 sm:px-6 lg:px-8 py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-2xl lg:mx-0">
+          <h2 class="section-title">Kiemelt blogbejegyzések</h2>
+          <p class="mt-2 text-lg/8 text-gray-600">Olvashatsz független gondolataimről az online jelenlét és üzleti növekedés témáiban.</p>
+        </div>
+        <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          
+          <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
+            <div class="flex items-center gap-x-4 text-xs">
+              <time datetime="2020-03-16" class="text-gray-500">2020. március 16.</time>
+              <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
+            </div>
+            <div class="group relative grow">
+              <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                <a href="/blog/posts/online-konverzio">
+                  <span class="absolute inset-0"></span>
+                  Hogyan növeld az online konverziót?
+                </a>
+              </h3>
+              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Tippek és eszközök az online konverziós arány növelésére, a látogatók ügyfelekké alakításához.</p>
+            </div>
+          </article>
+
+          <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
+            <div class="flex items-center gap-x-4 text-xs">
+              <time datetime="2020-03-10" class="text-gray-500">2020. március 10.</time>
+              <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Értékesítés</a>
+            </div>
+            <div class="group relative grow">
+              <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                <a href="/blog/posts/seo-ertekesites">
+                  <span class="absolute inset-0"></span>
+                  Hogyan használd a keresőoptimalizálást az értékesítéshez?
+                </a>
+              </h3>
+              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Ismerd meg, hogyan segíthet a SEO több ügyfelet hozni az oldaladra és növelni a bevételedet.</p>
+            </div>
+          </article>
+
+          <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
+            <div class="flex items-center gap-x-4 text-xs">
+              <time datetime="2020-02-12" class="text-gray-500">2020. február 12.</time>
+              <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Üzlet</a>
+            </div>
+            <div class="group relative grow">
+              <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                <a href="/blog/posts/vasarloi-elmeny">
+                  <span class="absolute inset-0"></span>
+                  Hogyan javítsd a vásárlói élményt?
+                </a>
+              </h3>
+              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Egyszerű lépések és eszközök a felhasználói élmény fejlesztésére – hogy ügyfeleid visszatérjenek.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+      <div class="mt-12 flex justify-center">
+      <a href="/blog" class="btn btn-outline">
+        További bejegyzések
+      </a>
+    </div>
+
+    </section>
+
+<footer class="bg-white border-t">
+  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-5">
+      <!-- Bal oldal -->
+      <div class="lg:col-span-2">
+        <p href="#" class="color-primary text-xl font-bold flex items-center gap-2">
+          Íratkozz fel hírlevelemre
+        </p>
+      <form id="newsletter-form" class="mt-6 max-w-xs">
+        <label for="newsletter-email" class="sr-only">Email címed</label>
+        <div class="flex items-center space-x-2">
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            required
+            placeholder="Email címed"
+            class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          />
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Feliratkozás
+          </button>
+        </div>
+      </form>
+
+        <div class="mt-6 flex space-x-4 text-gray-500">
+          <a href="https://www.facebook.com/studio.bgk" target="_blank" class="hover:text-gray-700"><i class="fab fa-facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg></i></a>
+          <a href="https://www.instagram.com/studio.bgk?utm_source=ig_web_button_share_sheet&igsh=Z3k0NnRkaXE0eWd3" target="_blank" class="hover:text-gray-700"><i class="fab fa-instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg></i></a>
+        </div>
+         <div id="elerhetosegek" class="mt-6 text-light text-sm space-y-2">
+  <h3 class="text-base font-semibold text-gray-900">Elérhetőségeim</h3>
+  
+  <div class="flex items-center gap-2">
+    📞 <a href="tel:+36708822043" class="hover:underline">+36 708822043</a>
+  </div>
+
+  <div class="flex items-center gap-2">
+    📧 <a href="mailto:info@studiobgk.com" class="hover:underline">info@studiobgk.com</a>
+  </div>
+</div>
+
+      </div>
+
+      <!-- Jobb oldali linkoszlopok -->
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-3">
+        <div>
+          <ul class="mt-4 space-y-2 text-sm text-light">
+            <li><a href="/index.html#services" class="hover:underline">Szolgáltatások</a></li>
+            <li><a href="/index.html#about" class="hover:underline">Rólam</a></li>
+            <li><a href="/index.html#contact" class="hover:underline">Kapcsolat</a></li>
+            <li><a href="/blog/index.html" class="hover:underline">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="mt-4 space-y-2 text-sm text-light">
+            <li><a href="/index.html#service-weboldal" class="hover:underline">Weboldal készítés</a></li>
+            <li><a href="/index.html#service-seo" class="hover:underline">SEO és tartalomstratégia</a></li>
+            <li><a href="/index.html#service-hirdetes" class="hover:underline">Hírdetés kezelés</a></li>
+            <li><a href="/index.html#service-tech" class="hover:underline">Technikai tanácsadás</a></li>
+            <li><a href="/index.html#analysis" class="hover:underline">Weboldal elemzés</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="mt-4 space-y-2 text-sm text-light">
+          <li>
+            <button disabled
+              class="text-gray-400 cursor-not-allowed"
+              title="Belépés szükséges">
+              Demo megnyitása
+            </button>
+          </li>
+            <li><a href="/index.html#faq" class="hover:underline">GYIK</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="mt-4 space-y-2 text-sm text-light">
+            <li><a href="/adatkezelesi-tajekoztato.html" class="hover:underline" target="_blank">Adatkezelési tájékoztató</a></li>
+            <li><a href="/impresszum.html" class="hover:underline" target="_blank">Impresszum</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t pt-8 text-sm text-gray-500 text-center">
+      © 2025 Studio BGK. Minden jog fenntartva.
+    </div>
+  </div>
+
+  <!--NEWSLETTER MODAL-->
+  <div id="newsletter-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div class="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+    <h2 class="text-xl font-semibold text-gray-900 text-center">Köszönöm a felíratkozást!</h2>
+    <div class="mt-6 flex justify-end gap-4">
+      <button id="modal-close" class="text-sm font-medium text-gray-600 hover:text-gray-800">Bezárás</button>
+    </div>
+  </div>
+</div>
+
+</footer>
+
+    <!-- TECH STACK SECTION -->
+    <section class="bg-neutral-300 py-4 relative">
+          <!-- Görgethető konténer -->
+          <div class="overflow-x-auto hide-scrollbar">
+            <div class="flex items-center justify-center lg:justify-center space-x-10 px-6 w-max lg:mx-auto h-8">
+
+              <img src="/assets/techstack/html5.svg" alt="HTML5 logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/css3.svg" alt="CSS3 logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/javascript.svg" alt="JavaScript logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/react.svg" alt="React logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/nextjs.svg" alt="Next.js logó" class="h-8 bg-white p-1 rounded" loading="lazy">
+              <img src="/assets/techstack/php.svg" alt="PHP logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/nodejs.svg" alt="Node.js logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/figma.svg" alt="Figma logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/Canva.svg" alt="Canva logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/meta.webp" alt="Meta logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/google_ads.svg" alt="Google Ads logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/Notion.webp" alt="Notion logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/openai.svg" alt="OpenAI logó" class="h-8" loading="lazy">
+
+            </div>
+          </div>
+
+          <!-- Mobil scroll nyíl -->
+          <div class="absolute right-2 top-1/2 transform -translate-y-1/2 lg:hidden pointer-events-none">
+            <svg class="w-5 h-5 text-neutral-950 animate-pulse" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+    </section>
+
+    <script>
+      const servicesToggle = document.getElementById('servicesToggle');
+      const servicesMenu = document.getElementById('servicesMenu');
+      const chevronIcon = document.getElementById('chevronIcon');
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      const hamburgerIcon = document.getElementById('hamburgerIcon');
+      const closeIcon = document.getElementById('closeIcon');
+      let servicesOpen = false;
+
+      servicesToggle.addEventListener('click', () => {
+        servicesOpen = !servicesOpen;
+        if (servicesOpen) {
+          servicesMenu.classList.remove('max-h-0', 'opacity-0');
+          servicesMenu.classList.add('max-h-[300px]', 'opacity-100');
+          chevronIcon.classList.add('rotate-180');
+        } else {
+          servicesMenu.classList.remove('max-h-[300px]', 'opacity-100');
+          servicesMenu.classList.add('max-h-0', 'opacity-0');
+          chevronIcon.classList.remove('rotate-180');
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth < 768 && servicesOpen) {
+          servicesMenu.classList.remove('max-h-[300px]', 'opacity-100');
+          servicesMenu.classList.add('max-h-0', 'opacity-0');
+          chevronIcon.classList.remove('rotate-180');
+          servicesOpen = false;
+        }
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenu.classList.remove('translate-x-0');
+        mobileOverlay.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+      }
+
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.contains('translate-x-0');
+        if (!isOpen) {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenu.classList.add('translate-x-0');
+          mobileOverlay.classList.remove('hidden');
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          document.body.classList.add('no-scroll');
+        } else {
+          closeMobileMenu();
+        }
+      });
+
+      mobileOverlay.addEventListener('click', closeMobileMenu);
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMobileMenu();
+        }
+      });
+    </script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const panels = gsap.utils.toArray(".tab-panel");
+  const count = panels.length;
+
+  gsap.set(panels, { x: "100%", autoAlpha: 0, zIndex: 0 });
+  gsap.set(panels[0], { x: "0%", autoAlpha: 1, zIndex: 1 });
+
+  for (let i = 1; i < count; i++) {
+    const prev = panels[i - 1];
+    const curr = panels[i];
+
+    // lefelé: prev balra ki, curr jobbról be
+    ScrollTrigger.create({
+      trigger: "#bgk-tab-switcher",
+      start: `${(i * 100) / count}% center`,
+      end: `${((i + 1) * 100) / count}% center`,
+      scrub: true,
+      onEnter: () => {
+        gsap.to(prev, {
+          x: "-100%",
+          autoAlpha: 0,
+          zIndex: 0,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+        gsap.set(curr, { x: "100%", zIndex: 1 });
+        gsap.to(curr, {
+          x: "0%",
+          autoAlpha: 1,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    // felfelé: curr jobbra ki, prev balról be
+    ScrollTrigger.create({
+      trigger: "#bgk-tab-switcher",
+      start: `${(i * 100) / count}% center`,
+      end: `${((i - 1) * 100) / count}% center`,
+      scrub: true,
+      onEnterBack: () => {
+        gsap.to(curr, {
+          x: "100%",
+          autoAlpha: 0,
+          zIndex: 0,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+        gsap.set(prev, { x: "-100%", zIndex: 1 });
+        gsap.to(prev, {
+          x: "0%",
+          autoAlpha: 1,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+      }
+    });
+  }
+</script>
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.timeline-text').forEach(el => {
+    gsap.to(el, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+      }
+    });
+  });
+
+  gsap.utils.toArray('.timeline-img').forEach(el => {
+    gsap.to(el, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+      }
+    });
+  });
+
+  // Mobilos verzió: alulról úszik be
+  gsap.utils.toArray('.timeline-text-mobile, .timeline-img-mobile').forEach(el => {
+    gsap.to(el, {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      }
+    });
+  });
+</script>
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1. Soronkénti beúszás (GSAP ScrollTrigger)
+  document.querySelectorAll(".ref-row").forEach((row) => {
+    gsap.fromTo(
+      row,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: row,
+          start: "top 85%",
+        },
+      }
+    );
+  });
+
+  // 2. Hover proximity smooth mozgás
+  const tiles = document.querySelectorAll(".ref-tile");
+  const maxDist = 600;
+  const strength = 12;
+  const smoothing = 0.1;
+
+  tiles.forEach(tile => {
+    tile._targetX = 0;
+    tile._targetY = 0;
+    tile._currentX = 0;
+    tile._currentY = 0;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    tiles.forEach((tile) => {
+      const rect = tile.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const distX = centerX - e.clientX;
+      const distY = centerY - e.clientY;
+      const distance = Math.sqrt(distX ** 2 + distY ** 2);
+
+      if (distance < maxDist) {
+        const factor = (1 - distance / maxDist) * strength;
+        tile._targetX = (distX / distance) * factor;
+        tile._targetY = (distY / distance) * factor;
+      } else {
+        tile._targetX = 0;
+        tile._targetY = 0;
+      }
+    });
+  });
+
+  // 3. Animációs ciklus – smooth mozgás
+  function animateTiles() {
+    tiles.forEach((tile) => {
+      tile._currentX += (tile._targetX - tile._currentX) * smoothing;
+      tile._currentY += (tile._targetY - tile._currentY) * smoothing;
+      tile.style.transform = `translate(${tile._currentX}px, ${tile._currentY}px)`;
+    });
+    requestAnimationFrame(animateTiles);
+  }
+  animateTiles();
+</script>
+
+
+  </body>
+</html>
