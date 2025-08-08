@@ -1,0 +1,71 @@
+ <!-- Header -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="/assets/images/logo.webp" alt="Studio logo" class="h-8">
+        </div>
+        <nav class="hidden md:flex flex-grow justify-center space-x-8 text-sm font-medium items-center">
+          <button id="servicesToggle" class="text-gray-950 hover:underline flex items-center gap-1">
+            Szolgáltatások
+            <svg id="chevronIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <a href="#" class="text-gray-950 hover:underline">Névjegy</a>
+          <a href="#" class="text-gray-950 hover:underline">Blog</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="bg-blue-100 text-black px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 hidden md:inline">Kapcsolatfelvétel</a>
+          <button id="mobileMenuToggle" class="md:hidden text-gray-950 focus:outline-none">
+            <svg id="hamburgerIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    <!-- Smooth Services dropdown -->
+    <div id="servicesMenu" class="sticky top-[4.3rem] w-full overflow-hidden bg-[#e3e7ec] backdrop-blur-md z-40 max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-950 text-center pt-12 pb-10">
+        <div class="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6 lg:gap-8 text-lg font-semibold mb-6">
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Digitális stratégia</a>
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Arculattervezés</a>
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Weboldalkészítés</a>
+          <a href="#" class="hover:bg-gray-100 transition-colors duration-300 py-6 flex items-center justify-center">Online marketing</a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-950">
+          <a href="#" class="hover:text-gray-600">Weboldalelemzés</a>
+          <a href="#" class="hover:text-gray-600">Technikai tanácsadás</a>
+          <a href="#" class="hover:text-gray-600">Keresőoptimalizálás</a>
+          <a href="#" class="hover:text-gray-600">Automatizálás | AI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div id="mobileOverlay" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden"></div>
+    <div id="mobileMenu" class="fixed top-[4rem] right-0 h-[calc(100%-4rem)] w-72 bg-gray-50/90 backdrop-blur-md text-gray-950 z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col space-y-6">
+      <a href="#" class="bg-blue-100 text-black px-4 py-2 rounded-full text-sm font-medium">Kapcsolatfelvétel</a>
+      <div>
+        <div class="flex flex-col space-y-4">
+          <a href="#" class="text-gray-950">Digitális stratégia</a>
+          <a href="#" class="text-gray-950">Arculattervezés</a>
+          <a href="#" class="text-gray-950">Weboldalkészítés</a>
+          <a href="#" class="text-gray-950">Online marketing</a>
+        </div>
+        <div class="mt-6 text-sm text-gray-600 flex flex-col space-y-2">
+          <a href="#" class="hover:text-gray-800">Weboldalelemzés</a>
+          <a href="#" class="hover:text-gray-800">Technikai tanácsadás</a>
+          <a href="#" class="hover:text-gray-800">Keresőoptimalizálás</a>
+          <a href="#" class="hover:text-gray-800">Automatizálás | AI</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-6">
+        <a href="#" class="text-gray-950 block mb-2">Névjegy</a>
+        <a href="#" class="text-gray-950 block">Blog</a>
+      </div>
+    </div>
+
+    <script src="/js/header-scripts.js"></script>
