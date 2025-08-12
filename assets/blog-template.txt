@@ -1,0 +1,78 @@
+<article 
+  class="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
+  itemscope 
+  itemtype="https://schema.org/BlogPosting" 
+  data-category="IDE-KATEGÓRIA">
+  
+  <!-- 📷 Kép -->
+  <div class="relative">
+    <img src="/blog/blog-images/IDE-FÁJLNÉV.webp" 
+         alt="IDE A KÉP LEÍRÁSA" 
+         class="w-full h-64 object-cover"
+         itemprop="image">
+    <span class="absolute top-4 right-4 IDE-SZÍN-BG text-white text-xs font-semibold px-3 py-1 rounded-full">
+      IDE A KATEGÓRIA NÉV (pl. MARKETING)
+    </span>
+  </div>
+
+  <!-- 📝 Tartalom -->
+  <div class="px-6 pb-6 text-center">
+    <!-- 🏷 CÍM -->
+    <h2 class="text-2xl font-bold text-gray-900 mt-4" itemprop="headline">
+      <a href="/blog/posts/IDE-FÁJLNÉV.html" itemprop="url">
+        IDE A POSZT CÍME
+      </a>
+    </h2>
+
+    <!-- 📜 KIVONAT -->
+    <p class="mt-3 text-gray-600 text-sm leading-relaxed" itemprop="description">
+      IDE JÖN EGY RÖVID LEÍRÁS, AMI KEDVET CSINÁL AZ ELŐZÉTES OLVASÁSHOZ…
+    </p>
+
+    <!-- 📖 OLVASS TOVÁBB -->
+    <a href="/blog/posts/IDE-FÁJLNÉV.html" 
+       class="mt-4 inline-block text-[#2867a2] font-semibold hover:underline">
+       OLVASS TOVÁBB »
+    </a>
+
+    <!-- 📅 DÁTUM -->
+    <div class="mt-4 text-xs text-gray-500">
+      <time datetime="IDE-ISO-DÁTUM" itemprop="datePublished">IDE A FORMÁZOTT DÁTUM</time>
+      <meta itemprop="dateModified" content="IDE-ISO-DÁTUM">
+    </div>
+  </div>
+</article>
+
+
+📌 MIT KELL KITÖLTENI?
+✅ 1. data-category
+
+Ide írd be, hogy milyen kategóriába tartozik (pl. marketing, ertekesites, online, uzlet – kisbetűvel!).
+
+✅ 2. Kép
+
+src="/blog/blog-images/IDE-FÁJLNÉV.webp" → a kép fájlneve.
+
+alt="IDE A KÉP LEÍRÁSA" → SEO szempontból fontos, rövid, pontos leírás.
+
+✅ 3. Kategória címke
+
+<span ...> IDE A KATEGÓRIA NÉV </span> → a látható címke (pl. MARKETING, ÜZLET).
+
+IDE-SZÍN-BG → Tailwind szín class (pl. bg-green-600, bg-blue-600, bg-purple-600).
+
+✅ 4. Cím
+
+<a href="/blog/posts/IDE-FÁJLNÉV.html"> IDE A POSZT CÍME </a>
+
+✅ 5. Leírás
+
+<p itemprop="description"> IDE A RÖVID BEVEZETŐ (1-2 mondat) </p>
+
+✅ 6. Dátum
+
+<time datetime="IDE-ISO-DÁTUM">IDE A FORMÁZOTT DÁTUM</time>
+
+ISO formátum: 2025-07-28
+
+Formázott dátum: július 28, 2025

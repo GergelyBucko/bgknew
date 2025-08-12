@@ -1,0 +1,83 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- 🔑 SEO META -->
+  <title>Weboldal készítés, online marketing kisvállalkozásoknak | Studio BGK</title>
+	<meta name="description" content="Weboldal készítés, SEO és online marketing kisvállalkozásoknak. A Studio BGK segít, hogy digitális jelenléted ügyfelet és bevételt hozzon.">
+	<meta name="robots" content="index, follow">
+	<meta name="author" content="B. Gergely Kristóf">
+	<meta name="keywords" content="weboldal készítés, online marketing, digitális jelenlét, kisvállalkozásoknak, SEO, branding, webdesign, Studio BGK, ügyfélszerzés online, weboldal kisvállalkozásnak">
+
+  <!-- 📱 FAVICON & FONT -->
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+
+  <!-- 🧭 KANONIKUS URL -->
+  <link rel="canonical" href="https://studiobgk.com/">
+
+	<!-- 🔗 OPEN GRAPH (Facebook, LinkedIn) -->
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="hu_HU">
+	<meta property="og:site_name" content="Studio BGK">
+	<meta property="og:title" content="Weboldal készítés és online marketing kisvállalkozásoknak | Studio BGK">
+	<meta property="og:description" content="Weboldalak, SEO és digitális marketing kisvállalkozásoknak. A Studio BGK segít, hogy online jelenléted ügyfelet és bevételt hozzon.">
+	<meta property="og:url" content="https://studiobgk.com/">
+	<meta property="og:image" content="https://studiobgk.com/assets/og-image.jpg">
+
+	<!-- 🐦 TWITTER CARD -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Weboldal készítés, online marketing kisvállalkozásoknak | Studio BGK">
+	<meta name="twitter:description" content="Weboldalak, SEO és digitális marketing kisvállalkozóknak. A Studio BGK segít, hogy online jelenléted ügyfelet és bevételt hozzon.">
+	<meta name="twitter:image" content="https://studiobgk.com/assets/og-image.jpg">
+
+	<!-- 📊 STRUCTURED DATA (JSON-LD) -->
+		<!-- ✅ ORGANIZATION -->
+		<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "Studio BGK",
+		"url": "https://studiobgk.com",
+		"logo": "https://studiobgk.com/assets/logo.png",
+		"description": "Weboldal készítés, SEO és online marketing kisvállalkozásoknak.",
+		"sameAs": [
+			"https://www.facebook.com/studiobgk",
+			"https://www.instagram.com/studiobgk"
+		],
+		"founder": {
+			"@type": "Person",
+			"name": "B. Gergely Kristóf"
+		},
+		"contactPoint": {
+			"@type": "ContactPoint",
+			"email": "hello@studiobgk.com",
+			"contactType": "customer support",
+			"availableLanguage": "Hungarian"
+		}
+		}
+		</script>
+
+		<!-- ✅ WEBPAGE -->
+		<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"name": "Studio BGK – Weboldal készítés és online marketing",
+		"url": "https://studiobgk.com",
+		"description": "Weboldal készítés, SEO és digitális marketing kisvállalkozóknak.",
+		"inLanguage": "hu",
+		"isPartOf": {
+			"@type": "Website",
+			"name": "Studio BGK",
+			"url": "https://studiobgk.com"
+		}
+		}
+		</script>
+
+  <!-- 🎨 SAJÁT STÍLUSOK -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./media.css">
+</head>
