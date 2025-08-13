@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio Tailwind</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -24,76 +24,146 @@
         scrollbar-width: none;
       }
       
-    </style>
-<style>
   body.lock-scroll {
     overflow: hidden;
   }
-</style>
 
+
+</style>
+<style>
+/* Billboard villanás + hairline fix – azonnali override */
+.billboard { perspective: 1200px; }
+.billboard-grid{ position:absolute; inset:0; display:grid; gap:0; }
+.billboard-col{ position:relative; transform-style:preserve-3d; transition:transform 600ms cubic-bezier(.22,.61,.36,1); outline:1px solid transparent; }
+.billboard-col.is-flipping{ transform: rotateY(180deg); }
+
+.billboard-face{
+  position:absolute; inset:0;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  background-repeat:no-repeat;
+  background-size: calc(var(--cols) * 100%) 100%;
+  background-position: calc(var(--i) * (100% / (var(--cols) - 1))) 50%;
+  transform: translateZ(0.12px); /* nagyobb Z, hogy a hajszálcsík eltűnjön */
+  will-change: transform, opacity;
+}
+.billboard-face.back{
+  transform: rotateY(180deg) translateZ(0.08px);
+  opacity:0;           /* fontos! ne villanjon fel a következő kép */
+}
+.billboard-col.is-flipping .billboard-face.back{ opacity:1; } /* csak flip közben látszódjon */
+</style>
   </head>
-  <body class="bg-[#e3e7ec] text-gray-950 overflow-x-hidden relative">
+  <body class="bg-[#e3e7ec] text-gray-900 overflow-x-hidden relative">
     <!-- Header -->
-<header id="mainHeader" class="sticky top-0 left-0 w-full z-50 bg-[#e3e7ec]">
-  <div data-include="includes/header.html"></div>
-</header>
+  <?php include __DIR__ . '/includes/header.html'; ?>
 
     <!-- Hero Section ----------------->
-    <section id="heroSection" class="relative z-20 bg-white text-gray-900 pt-32 pb-32 px-4 sm:px-6 lg:px-8 rounded-t-[3rem] transition-all duration-500 ease-in-out">
-      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover -z-10 rounded-t-[3rem]">
-        <source src="/assets/3664353901-preview.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div class="absolute inset-0 bg-[#f3f3f3]/50 backdrop-blur-sm -z-10 rounded-t-[3rem]"></div>
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(240,240,240,0.6)_0%,transparent_70%)] rounded-t-[3rem]"></div>
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-8">
-          <span class="uppercase border-b-4 border-[#ebaf73] pb-1 mb-2 inline-block">Garantált</span><br>ügyfélszerzés, modern digitális megoldásokkal
-        </h1>
-        <h2 class="text-lg text-gray-900 max-w-2xl mx-auto">
-          Teljes körü online marketing, arculat- és webes alkalmazásfejlesztés vállalkozásoknak
-        </h2>
-      </div>
-    </section>
+<section id="heroSection" class="relative z-20 bg-white text-gray-900 pt-24 sm:pt-32 pb-24 sm:pb-32 px-4 sm:px-6 lg:px-8 rounded-t-[3rem] transition-all duration-500 ease-in-out">
+  <!-- Video háttér -->
+  <video autoplay muted loop playsinline poster="/assets/hero-fallback.jpg"
+    class="absolute inset-0 w-full h-full object-cover -z-10 rounded-t-[3rem]">
+    <source src="/assets/videos/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay rétegek -->
+  <div class="absolute inset-0 bg-[#f3f3f3]/50 backdrop-blur-sm -z-10 rounded-t-[3rem]"></div>
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(240,240,240,0.6)_0%,transparent_70%)] rounded-t-[3rem]"></div>
+
+  <!-- Tartalom -->
+<div class="max-w-4xl mx-auto text-center">
+  <h1 class="opacity-0 animate-fade-in text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6" style="animation-delay: 0.2s;">
+    <span class="uppercase border-b-4 border-[#ebaf73] pb-1 mb-2 inline-block">Garantált</span><br>
+    ügyfélszerzés, modern digitális megoldásokkal
+  </h1>
+
+  <h2 class="opacity-0 animate-fade-in text-base sm:text-lg text-gray-900 max-w-2xl mx-auto mb-8" style="animation-delay: 0.2s;">
+    Teljes körű online marketing, arculat- és webes alkalmazásfejlesztés vállalkozásoknak
+  </h2>
+
+  <a href="#contact"
+     class="opacity-0 animate-fade-in-then-scale inline-block bg-[#ebaf73] text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-[#e49b50] transition"
+     style="animation-delay: 1s;">
+    Dolgozzunk együtt!
+  </a>
+</div>
+
+
+
+</section>
+
 
     <!-- Bemutatkozó szekció ------------------->
-    <section class="relative z-10 bg-white text-gray-950 px-4 sm:px-6 lg:px-8 py-24">
-      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+<section id="mit-csinalunk" class="relative z-10 bg-white text-gray-900 px-4 sm:px-6 lg:px-8 py-24">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-        <!-- Jobb oldal (kerül felülre kis képernyőn) -->
-        <div class="order-1 md:order-2 flex flex-col self-start">
-          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-            <span class="text-black">"célom a <span class="italic font-bold">teljesség</span>"</span>
-          </h2>
-          <p class="text-lg leading-relaxed mb-10 text-justify">
-            Ahhoz, hogy valami igazán működjön, rendszerben kell gondolkodni. Legyen szó a teljes online jelenlétünkről, vagy egy ügyfélszerző kampányról. <br><strong>A siker a részleteken múlik!</strong>
-          </p>
-          <a href="#"
-            class="inline-block px-10 py-4 border border-black rounded-full text-lg font-medium hover:bg-gray-100 transition-all duration-300 text-center">
-            bővebben
-          </a>
-        </div>
+    <!-- Jobb oldal (kisebb képernyőn felül) -->
+    <div class="order-1 md:order-2 flex flex-col self-start text-center md:text-left">
+      <h2 class=" opacity-0  text-4xl sm:text-5xl font-bold mb-6" data-anim="fade" data-delay="0" >
+        <span class="relative inline-block">
+          <span class="text-gray-900 ">„célom a <span class="italic font-bold">teljesség</span>”</span>
+          <!-- dísz idézőjel (nem kötelező) -->
+        </span>
+      </h2>
 
-        <!-- Bal oldal (kerül alulra kis képernyőn) -->
-        <div class="order-2 md:order-1 flex flex-col self-start">
-          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-            <span class="italic font-bold text-black">Mit</span> fogunk csinálni?
-          </h2>
-          <p class="text-lg leading-relaxed mb-10 text-justify">
-            Röviden:<br>
-            Online rendszereket építünk, amik pénzt termelnek a vállalkozásodnak.<br><br>
-            Letisztult, felhasználóbarát weboldalak,<br>
-            értékesítést támogató marketing rendszerek,<br>
-            erős, hiteles vizuális arculat.
-            <br><strong>Minden ami számít, <span class="italic text-1xl">egy helyen, egy kézben!</span></strong>
-          </p>
-        </div>
+      <p class="opacity-0 text-lg leading-relaxed mb-8 md:mb-10 text-justify text-gray-600" data-anim="fade" data-delay="0.2" >
+        Ahhoz, hogy valami igazán működjön, rendszerben kell gondolkodni. Legyen szó a teljes online jelenlétünkről, vagy egy ügyfélszerző kampányról.
+        <br><strong class="text-gray-900">A siker a részleteken múlik!</strong>
+      </p>
 
+      <a href="#about"
+         class="opacity-0 inline-block px-10 py-4 rounded-full text-lg font-medium
+                 transition-all duration-300 text-center bg-[#2867a2] text-white hover:bg-[#1f4f7e]"
+         data-anim="fade" data-delay="0.4" 
+         aria-label="Bővebben rólam">
+        Bővebben...
+      </a>
+    </div>
+
+    <!-- Bal oldal (kisebb képernyőn alul) -->
+    <div class="order-2 md:order-1 flex flex-col self-start text-center md:text-left">
+      <h2 class="opacity-0 text-4xl sm:text-5xl font-bold mb-6 " data-anim="fade" data-delay="0">
+        <span class="italic font-bold text-black">Mit</span> fogunk csinálni?
+      </h2>
+
+      <p class="opacity-0 text-lg leading-relaxed mb-8 md:mb-10 text-justify text-gray-600" data-anim="fade" data-delay="0.2">
+        Röviden:<br>
+        Online rendszereket építünk, amik pénzt termelnek a vállalkozásodnak.<br><br>
+        Céloknak megfelelő weboldalak,<br>
+        értékesítést támogató marketing rendszerek,<br>
+        erős, hiteles vizuális arculat.
+        <br><strong class="text-gray-900">Minden ami számít, <span class="italic">egy helyen, egy kézben!</span></strong>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Bizalmi sor -->
+  <div class="max-w-7xl mx-auto mt-12 md:mt-16">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      <div class=" opacity-0" data-anim="fade" data-delay="0">
+        <p class="text-3xl font-bold text-[#ebaf73]">99%</p>
+        <p class="text-xs text-gray-600">ügyfél-elégedettség</p>
       </div>
-    </section>
+      <div class=" opacity-0" data-anim="fade" data-delay="0">
+        <p class="text-3xl font-bold text-[#ebaf73]">120+</p>
+        <p class="text-xs text-gray-600">lezárt fejlesztés</p>
+      </div>
+      <div class="opacity-0" data-anim="fade" data-delay="0">
+        <p class="text-3xl font-bold text-[#ebaf73]">&lt; 1s</p>
+        <p class="text-xs text-gray-600">LCP cél weben</p>
+      </div>
+      <div class="opacity-0" data-anim="fade" data-delay="0">
+        <p class="text-3xl font-bold text-[#ebaf73]">A+</p>
+        <p class="text-xs text-gray-600">PageSpeed cél</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- SZOLGÁLTATÁSOK VÉGLEGES ----------------------->
-    <section class="bg-gradient-to-b from-white to-gray-200 px-4 sm:px-6 lg:px-8 py-24 text-gray-950">
+    <section class="bg-gradient-to-b from-white to-gray-200 px-4 sm:px-6 lg:px-8 py-24 text-gray-900">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
 
         <!-- Jobb oszlop – szolgáltatáslista -->
@@ -101,25 +171,25 @@
           <div class="flex flex-col justify-between h-full">
             <!-- Fejléc -->
             <div class="space-y-8">
-              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">Megoldások elejétől a végéig</h2>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-center md:text-left">Megoldások elejétől a végéig</h2>
 
               <!-- Lista -->
               <div class="space-y-8">
-                <div class="border-l border-gray-300 pl-4">
+                <div class="border-l-2 border-[#ebaf73] pl-4">
                   <h3 class="font-semibold text-lg">Digitális stratégia</h3>
-                  <h4 class="text-gray-700">Kezdésképp megtervezzük a teljes kommunikációdat és az ügyfeleid pontos elérésének a módját</h4>
+                  <h4 class="text-gray-600 text-justify">Kezdésképp megtervezzük a teljes kommunikációdat és az ügyfeleid pontos elérésének a módját</h4>
                 </div>
-                <div class="border-l border-gray-300 pl-4">
+                <div class="border-l-2 border-[#ebaf73] pl-4">
                   <h3 class="font-semibold text-lg">Arculattervezés</h3>
-                  <h4 class="text-gray-700">Ezután kialakítjuk azt a minőségi megjelenést, ami maximálisan tudja képviselni cégedet online és offline is</h4>
+                  <h4 class="text-gray-600 text-justify">Ezután kialakítjuk azt a minőségi megjelenést, ami maximálisan tudja képviselni cégedet online és offline is</h4>
                 </div>
-                <div class="border-l border-gray-300 pl-4">
+                <div class="border-l-2 border-[#ebaf73] pl-4">
                   <h3 class="font-semibold text-lg">Weboldalkészítés</h3>
-                  <h4 class="text-gray-700">A következő lépésben elkészül a weboldal, ahol a vásárlóid elérhetik szolgáltatásaidat. Alapvetően minden honlap a legfrissebb technológiákat alkalmazva, kódszinten épül fel</h4>
+                  <h4 class="text-gray-600 text-justify">A következő lépésben elkészül a weboldal, ahol a vásárlóid elérhetik szolgáltatásaidat. Alapvetően minden honlap a legfrissebb technológiákat alkalmazva, kódszinten épül fel</h4>
                 </div>
-                <div class="border-l border-gray-300 pl-4">
+                <div class="border-l-2 border-[#ebaf73] pl-4">
                   <h3 class="font-semibold text-lg">Online marketing</h3>
-                  <h4 class="text-gray-700">Végezetül mindent bevetünk a maximális konverzióért</h4>
+                  <h4 class="text-gray-600 text-justify">Végezetül mindent bevetünk a maximális konverzióért</h4>
                 </div>
               </div>
             </div>
@@ -131,52 +201,26 @@
           <div class="w-full max-w-[600px] mx-auto flex flex-col h-full">
             <!-- Kép -->
     <div class="relative w-full max-w-[600px] mx-auto">
-    <svg viewBox="0 0 655 480" class="w-full h-auto">
-      <defs>
-        <clipPath id="service-mask" clipPathUnits="userSpaceOnUse">
-          <rect x="0" y="0" stroke="#000000" stroke-miterlimit="10" width="108" height="450"/>
-                <rect x="121.5" y="25.5" stroke="#000000" stroke-miterlimit="10" width="55" height="405"/>
-                <rect x="192.5" y="9.5" stroke="#000000" stroke-miterlimit="10" width="60" height="434"/>
-                <rect x="271.5" y="44.5" stroke="#000000" stroke-miterlimit="10" width="63" height="376"/>
-                <rect x="349.5" y="25.5" stroke="#000000" stroke-miterlimit="10" width="208" height="397"/>
-                <rect x="574.5" y="44.5" stroke="#000000" stroke-miterlimit="10" width="60" height="396"/>
-                <rect x="644.5" y="9.5" stroke="#000000" stroke-miterlimit="10" width="68" height="421"/>
-                <rect x="736.5" y="18.5" stroke="#000000" stroke-miterlimit="10" width="49" height="412"/>
-        </clipPath>
-      </defs>
+      <!-- Prizmatábla váltó -->
+      <div
+        id="billboard1"
+        class="billboard rounded-2xl shadow-md overflow-hidden aspect-[655/480] bg-gray-100"
+        data-images='[
+          "/assets/images/weboldalkeszites.webp",
+          "/assets/images/seoestartalom.webp",
+          "/assets/images/technikaitanacsadas.webp",
+          "/assets/images/weboldalkeszites.webp"
+        ]'
+        data-cols="12"
+        data-interval="4000"
+      ></div>
 
-      <!-- Képek maszkolva -->
-      <image class="masked-image opacity-100 transition-opacity duration-1000 absolute top-0 left-0"
-            href="/assets/images/weboldalkeszites.webp"
-            width="655" height="480"
-            clip-path="url(#service-mask)" />
-
-      <image class="masked-image opacity-0 transition-opacity duration-1000 absolute top-0 left-0"
-            href="/assets/images/seoestartalom.webp"
-            width="655" height="480"
-            clip-path="url(#service-mask)" />
-
-      <image class="masked-image opacity-0 transition-opacity duration-1000 absolute top-0 left-0"
-            href="/assets/images/technikaitanacsadas.webp"
-            width="655" height="480"
-            clip-path="url(#service-mask)" />
-
-      <image class="masked-image opacity-0 transition-opacity duration-1000 absolute top-0 left-0"
-      href="/assets/images/weboldalkeszites.webp"
-      width="655" height="480"
-      clip-path="url(#service-mask)" />
-
-    </svg>
-
-
-      
-
-      <!-- Jelzőcsík -->
-      <div class="flex justify-center mt-4 gap-2">
-        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300 active-indicator"></div>
-        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300"></div>
-        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300"></div>
-        <div class="w-1 h-1 rounded-full bg-gray-300 transition-all duration-300"></div>
+      <!-- Jelzőpontok (maradhatnak a tieid is) -->
+      <div class="indicators flex justify-center mt-4 gap-2">
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
       </div>
     </div>
 
@@ -184,8 +228,8 @@
             <!-- Gomb -->
             <div class="mt-8">
               <a href="#"
-                class="block w-full px-10 py-4 border border-black rounded-full text-lg font-medium hover:bg-gray-100 transition-all duration-300 text-center">
-                bővebben
+                class="bg-[#2867a2] text-white hover:bg-[#1f4f7e] block w-full px-10 py-4 rounded-full text-lg font-medium transition-all duration-300 text-center">
+                Bővebben...
               </a>
             </div>
           </div>
@@ -232,9 +276,9 @@
                 after:border-l-8 after:border-l-[#007aff]
                 after:border-b-8 after:border-b-transparent">
                 <h2 class="text-lg md:text-xl font-semibold mb-2">Ez szuper, de menjünk biztosra!</h2>
-                <p class="text-sm md:text-base mb-3">Egy gyors átfogó elemzéssel pontosan megmutatom, hol veszíthetsz el érdeklődőket anélkül, hogy tudnál róla <br>Érdekel?</p>
-                <button class="mt-2 bg-white text-[#007aff] font-semibold px-4 py-2 rounded-full hover:bg-blue-100 transition">
-                  Naná! →
+                <p class="text-sm md:text-base mb-3 text-justify">Egy gyors átfogó elemzéssel <strong>pontosan megmutatom, hol veszíthetsz el érdeklődőket</strong> anélkül, hogy tudnál róla <br><strong>Érdekel?</strong></p>
+                <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                  Naná!
                 </button>
               </div>
             </div>
@@ -255,13 +299,17 @@
     <section id="timeline" class="relative bg-[#2867a2] py-24 px-4 sm:px-6 lg:px-8 text-white">
       <div class="max-w-7xl mx-auto relative">
         <div class="mb-16 text-center">
-          <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+          <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Tünj ki a tömegből!
           </h2>
+          <h3 class="text-lg md:text-xl text-center text-gray-200 max-w-2xl mx-auto mb-12">
+És legyen a weboldaladból egy működő rendszer
+</h3>
+
         </div>
         <div class="relative">
         <!-- Fekete középvonal -->
-        <div class="hidden md:block absolute top-0 bottom-0 left-1/2 w-[2px] bg-black z-0"></div>
+        <div class="hidden md:block absolute top-0 bottom-0 left-1/2 w-[2px] bg-gray-600 z-0"></div>
 
         <!-- Blokkok konténer -->
         <div class="space-y-24">
@@ -275,7 +323,11 @@
             <!-- Szöveg jobbra -->
             <div class="timeline-text opacity-0 translate-x-[50px]">
               <h3 class="text-2xl font-bold mb-4">Technikai tanácsadás</h3>
-              <p class="text-lg leading-relaxed">Segítünk átlátni, hogy mi hogyan működik a háttérben: tárhely, domain, weboldal, e-mail, DNS, Google, biztonság, gyorsaság — mindaz, amitől egy online rendszer stabil és megbízható lesz. Akkor is, ha nem vagy kocka.</p>
+              <p class="text-lg leading-relaxed text-justify">Segítek átlátni, hogy mi hogyan működik a háttérben: tárhely, domain, weboldal, e-mail, DNS, Google, biztonság, gyorsaság, mindaz, amitől egy online rendszer stabil és megbízható lesz. Egyszerűen és érthetően.</p>
+                            <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                  Erre van szükségem!
+                </button>
+
             </div>
             <!-- Mobil: szöveg + kép -->
             <div class="md:hidden space-y-4">
@@ -290,7 +342,10 @@
             <!-- Szöveg balra -->
             <div class="timeline-text opacity-0 translate-x-[-50px]">
               <h3 class="text-2xl font-bold mb-4">Keresőoptimalizálás</h3>
-              <p class="text-lg leading-relaxed">Technikai és tartalmi SEO egyben: gyors betöltés, reszponzivitás, Google-barát szerkezet, kulcsszókutatás, szövegírás, meta adatok és keresőbarát struktúra. A cél: első oldalas megjelenés, több organikus forgalom.</p>
+              <p class="text-lg leading-relaxed text-justify">Technikai és tartalmi SEO egyben: gyors betöltés, reszponzivitás, Google-barát szerkezet, kulcsszókutatás, szövegírás, meta adatok és keresőbarát struktúra. A cél: első oldalas megjelenés, több organikus forgalom.</p>
+                                        <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                  Erre van szükségem!
+                </button>
             </div>
             <!-- Kép jobbra -->
             <div class="timeline-img hidden md:block opacity-0 translate-x-[50px]">
@@ -313,7 +368,10 @@
             <!-- Szöveg jobbra -->
             <div class="timeline-text opacity-0 translate-x-[50px]">
               <h3 class="text-2xl font-bold mb-4">Automatizálás | AI</h3>
-              <p class="text-lg leading-relaxed">Automatizáljuk a monoton, időrabló folyamatokat – űrlapok, e-mailek, CRM, naptár, számlázás, chatbot. Ha kell, mesterséges intelligenciával turbózva. Te csak a fontos döntésekre koncentrálj, a rendszer elvégzi a többit.</p>
+              <p class="text-lg leading-relaxed text-justify">Automatizálom a monoton, időrabló folyamatokat: űrlapok, e-mailek, CRM, naptár, számlázás, chatbot. Ha kell, mesterséges intelligenciával turbózva. Így Te csak a fontos döntésekre tudsz majd koncentrálni, a rendszer elvégzi a többit.</p>
+                                        <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                  Erre van szükségem!
+                </button>
             </div>
             <!-- Mobil -->
             <div class="md:hidden space-y-4">
@@ -331,128 +389,154 @@
 <!-- STACKED PAKLI SZEKCIÓ -->
   <section class="bg-gradient-to-b from-[#2867a2] to-white text-gray-900 py-24 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-extrabold mb-16 text-center text-white">Referenciáink</h2>
+      <h2 class="text-4xl font-extrabold mb-4 text-center text-white">Amikor a weboldal csak a kezdet!</h2>
+<h3 class="text-lg md:text-xl text-center text-gray-200 max-w-2xl mx-auto mb-12">
+Teljes körű webfejlesztés, landingtől a komplex rendszerekig
+</h3>
 
       <div class="space-y-32 relative">
 
-        <!-- START: Csempék -->
-        <!-- Használható sablon mind az 5-höz -->
-        <!-- Képek: 3 kép .gallery-image-ben, nav nyilak: .prev/.next -->
-
         <!-- Csempe sablon (ismételd meg 5-ször) -->
-        <article class="h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
+        <article class="md:h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
           <!-- Kép + galéria -->
-          <div class="md:col-span-2 relative group overflow-hidden">
-            <div class="relative w-full h-full gallery h-[300px] md:h-full">
+          <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
+            <div class="relative w-full h-full gallery">
               <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
               <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
               <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
 
               <!-- Bal nyíl -->
-              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10094;
               </button>
               <!-- Jobb nyíl -->
-              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10095;
               </button>
             </div>
           </div>
 
           <!-- Szöveg -->
-          <div class="md:col-span-3 p-6 flex flex-col justify-center">
-            <h3 class="text-2xl font-bold mb-2">Weboldal – Étterem</h3>
-            <p class="text-lg text-gray-700">Letisztult arculat, gyors betöltés, mobilbarát kialakítás – egy családi étterem teljes digitális jelenlétét készítettük el az alapoktól.</p>
+          <div class="md:col-span-3 p-6 flex flex-col justify-center h-[300px] md:h-full">
+            <h3 class="text-2xl font-bold mb-2 text-gray-900 border-b-2 border-[#ebaf73]">Üzleti Weboldal + Online Foglalási Rendszer</h3>
+            <p class="text-lg text-gray-600 text-justify">Gyors, reszponzív weboldal integrált foglalási funkcióval. Vendégek bármikor, bárhonnan időpontot foglalhatnak, te pedig azonnal értesítést kapsz. Kevesebb telefonálás, több ügyfél.</p>
           </div>
         </article>
 
-              <article class="h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
+              <article class="md:h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
           <!-- Kép + galéria -->
-          <div class="md:col-span-2 relative group overflow-hidden">
-            <div class="relative w-full h-full gallery h-[300px] md:h-full">
+          <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
+            <div class="relative w-full h-full gallery">
               <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
               <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
               <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
 
               <!-- Bal nyíl -->
-              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10094;
               </button>
               <!-- Jobb nyíl -->
-              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10095;
               </button>
             </div>
           </div>
 
           <!-- Szöveg -->
-          <div class="md:col-span-3 p-6 flex flex-col justify-center">
-            <h3 class="text-2xl font-bold mb-2">Weboldal – Étterem</h3>
-            <p class="text-lg text-gray-700">Letisztult arculat, gyors betöltés, mobilbarát kialakítás – egy családi étterem teljes digitális jelenlétét készítettük el az alapoktól.</p>
+          <div class="md:col-span-3 p-6 flex flex-col justify-center h-[300px] md:h-full">
+            <h3 class="text-2xl font-bold mb-2 text-gray-900 border-b-2 border-[#ebaf73]">Dashboard / CRM</h3>
+            <p class="text-lg text-gray-600 text-justify">Testreszabott, könnyen kezelhető rendszer ügyfeleid és projektjeid nyilvántartására. Egyetlen felületen követheted a feladatokat, határidőket, pénzügyeket.</p>
           </div>
         </article>
 
-              <article class="h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
+              <article class="md:h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
           <!-- Kép + galéria -->
-          <div class="md:col-span-2 relative group overflow-hidden">
-            <div class="relative w-full h-full gallery h-[300px] md:h-full">
+          <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
+            <div class="relative w-full h-full gallery">
               <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
               <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
               <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
 
               <!-- Bal nyíl -->
-              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10094;
               </button>
               <!-- Jobb nyíl -->
-              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10095;
               </button>
             </div>
           </div>
 
           <!-- Szöveg -->
-          <div class="md:col-span-3 p-6 flex flex-col justify-center">
-            <h3 class="text-2xl font-bold mb-2">Weboldal – Étterem</h3>
-            <p class="text-lg text-gray-700">Letisztult arculat, gyors betöltés, mobilbarát kialakítás – egy családi étterem teljes digitális jelenlétét készítettük el az alapoktól.</p>
+          <div class="md:col-span-3 p-6 flex flex-col justify-center h-[300px] md:h-full">
+            <h3 class="text-2xl font-bold mb-2 text-gray-900 border-b-2 border-[#ebaf73]">E-Commerce + Automatizált Logisztika</h3>
+            <p class="text-lg text-gray-600 text-justify">Teljes értékű online bolt egyedi funkciókkal. Készletkezelés, csomagkövetés és számlázás, minden automatizálva, hogy Te az értékesítésre fókuszálhass.</p>
           </div>
         </article>
 
-              <article class="h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
+              <article class="md:h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
           <!-- Kép + galéria -->
-          <div class="md:col-span-2 relative group overflow-hidden">
-            <div class="relative w-full h-full gallery h-[300px] md:h-full">
+          <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
+            <div class="relative w-full h-full gallery">
               <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
               <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
               <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
 
               <!-- Bal nyíl -->
-              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10094;
               </button>
               <!-- Jobb nyíl -->
-              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700/50 hover:text-gray-900 transition z-10 text-4xl leading-none">
+              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
                 &#10095;
               </button>
             </div>
           </div>
 
           <!-- Szöveg -->
-          <div class="md:col-span-3 p-6 flex flex-col justify-center">
-            <h3 class="text-2xl font-bold mb-2">Weboldal – Étterem</h3>
-            <p class="text-lg text-gray-700">Letisztult arculat, gyors betöltés, mobilbarát kialakítás – egy családi étterem teljes digitális jelenlétét készítettük el az alapoktól.</p>
+          <div class="md:col-span-3 p-6 flex flex-col justify-center h-[300px] md:h-full">
+            <h3 class="text-2xl font-bold mb-2 text-gray-900 border-b-2 border-[#ebaf73]">Egyedi Landing Page + Lead Generátor</h3>
+            <p class="text-lg text-gray-600 text-justify">Kampányhoz készült prémium landing oldal, profi szövegezéssel és email-automatizálással. Növeld a bejövő ajánlatkérések számát célzott, mérhető kampányokkal.</p>
           </div>
         </article>
+
+         <article class="md:h-[400px] fade-card sticky top-32 bg-white rounded-xl shadow-sm overflow-hidden grid md:grid-cols-5 grid-cols-1">
+          <!-- Kép + galéria -->
+          <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
+            <div class="relative w-full h-full gallery">
+              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
+              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
+              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
+
+              <!-- Bal nyíl -->
+              <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
+                &#10094;
+              </button>
+              <!-- Jobb nyíl -->
+              <button class="next absolute top-1/2 right-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
+                &#10095;
+              </button>
+            </div>
+          </div>
+
+          <!-- Szöveg -->
+          <div class="md:col-span-3 p-6 flex flex-col justify-center h-[300px] md:h-full">
+            <h3 class="text-2xl font-bold mb-2 text-gray-900 border-b-2 border-[#ebaf73]">Interaktív Oktatási Felület</h3>
+            <p class="text-lg text-gray-600 text-justify">Online kurzuskezelő rendszer videókkal, tesztekkel és pontozással. Add el tudásodat digitálisan, egyszerűen kezelhető felületen.</p>
+          </div>
+        </article>
+
 
       </div>
     </div>
   </section>
 
     <!--CSOMAGAJANLATOK------------------->
-    <section id="packages" class="bg-gradient-to-b from-white to-gray-200 py-24 px-4 sm:px-6 lg:px-8 text-gray-950">
+    <section id="packages" class="bg-gradient-to-b from-white to-gray-200 py-24 px-4 sm:px-6 lg:px-8 text-gray-900">
       <div class="max-w-7xl mx-auto text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Nem tudod, hol kezdjünk?</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Ezért hoztuk létre az előre összeállított csomagokat – attól függően, hogy mennyire szeretnéd kiszervezni az online jelenléted.</p>
+        <h3p class="text-lg text-gray-600 max-w-2xl mx-auto">Válaszd gondosan összeállított csomagajánlataim egyikét és biztosan nem lősz mellé! Bármilyen szinten is gondolkodsz</h3>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
@@ -460,7 +544,7 @@
         <!-- START csomag -->
         <div class="border border-gray-200 rounded-2xl shadow-xl p-8 flex flex-col justify-between bg-neutral-50 hover:shadow-2xl transition">
           <div>
-            <h3 class="text-2xl font-bold mb-4">Start</h3>
+            <h3 class="text-2xl font-bold mb-4">BGK Start</h3>
             <p class="text-gray-600 mb-6">Ha még csak most indulsz, és az alapokat szeretnéd stabilan lefektetni.</p>
             <ul class="text-left space-y-3 text-sm">
               <li>✅ Konzultáció és célfeltárás</li>
@@ -471,14 +555,14 @@
               <li>✅ Mobilra optimalizálás</li>
             </ul>
           </div>
-          <a href="#contact" class="mt-8 inline-block bg-black text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-gray-800 transition">Ez érdekel</a>
+          <a href="#contact" class="mt-8 inline-block bg-[#ebaf73] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[#e49b50] transition">Ez érdekel!</a>
         </div>
 
         <!-- PROFI csomag -->
-        <div class="border-4 border-[#007aff] rounded-2xl shadow-2xl p-8 flex flex-col justify-between bg-white hover:shadow-3xl transition relative">
+        <div class="border-4 border-[#2867a2] rounded-2xl shadow-2xl p-8 flex flex-col justify-between bg-white hover:shadow-3xl transition relative">
           <div>
-            <div class="absolute -top-4 right-4 bg-[#007aff] text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">Legnépszerűbb</div>
-            <h3 class="text-2xl font-bold mb-4">Profi</h3>
+            <div class="absolute -top-4 right-4 bg-[#2867a2] text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">Legnépszerűbb</div>
+            <h3 class="text-2xl font-bold mb-4">BGK Boost</h3>
             <p class="text-gray-600 mb-6">Már működsz, de kell a szintlépés és a tudatos online jelenlét.</p>
             <ul class="text-left space-y-3 text-sm">
               <li>✅ Minden a Start csomagból</li>
@@ -489,14 +573,14 @@
               <li>✅ Alap analitika beépítés</li>
             </ul>
           </div>
-          <a href="#contact" class="mt-8 inline-block bg-[#007aff] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-blue-600 transition">Ez érdekel</a>
+          <a href="#contact" class="mt-8 inline-block bg-[#ebaf73] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[#e49b50] transition">Ez érdekel!</a>
         </div>
 
         <!-- KOMPLEX csomag -->
         <div class="border border-gray-200 rounded-2xl shadow-xl p-8 flex flex-col justify-between bg-neutral-50 hover:shadow-2xl transition">
           <div>
-            <h3 class="text-2xl font-bold mb-4">Komplex</h3>
-            <p class="text-gray-600 mb-6">Ha mindent ránk bíznál: a stratégiától az automatizálásig.</p>
+            <h3 class="text-2xl font-bold mb-4">BGK Scale</h3>
+            <p class="text-gray-600 mb-6">Ha mindent rám bíznál: a stratégiától az automatizálásig.</p>
             <ul class="text-left space-y-3 text-sm">
               <li>✅ Minden a Profi csomagból</li>
               <li>✅ Teljes digitális stratégia (audit + tervezés)</li>
@@ -506,7 +590,7 @@
               <li>✅ Teljes rendszer összekötés + betanítás</li>
             </ul>
           </div>
-          <a href="#contact" class="mt-8 inline-block bg-black text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-gray-800 transition">Ez érdekel</a>
+          <a href="#contact" class="mt-8 inline-block bg-[#ebaf73] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[#e49b50] transition">Ez érdekel!</a>
         </div>
 
       </div>
@@ -519,105 +603,25 @@
           <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug">
             Egyedi elképzelésed van?<br>Segítek megvalósítani!
           </h2>
-          <a href="#contact" class="mt-4 inline-block bg-white text-black px-6 py-3 rounded-full text-base font-medium hover:bg-gray-200 transition">
-            Kérj visszahívást →
-          </a>
         </div>
       </div>
     </section>
 
     <!--CONTACT------------------------------->
-    <section id="contact" class="relative z-10 bg-gradient-to-b from-gray-200 to-white text-gray-950 px-4 sm:px-6 lg:px-8 py-24">
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="section-title" style="color:#ebaf73">Dolgozzunk együtt!</h2>
-        <p class="mt-2 text-lg text-gray-600">
-          Írd meg, miben segíthetek! Legyen az egyedi weboldal, online stratégia vagy technikai tanácsadás. 24 órán belül válaszolok.
-        </p>
-      </div>
-
-      <form action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-
-          <!-- Szolgáltatás mező -->
-          <div class="sm:col-span-2">
-            <label for="service" class="block text-base font-semibold text-gray-900 mb-1">Milyen szolgáltatás érdekel?</label>
-            <input id="service" name="service" type="text" placeholder="Pl.: Weboldalkészítés" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
-          </div>
-
-          <!-- Név -->
-          <div>
-            <label for="first-name" class="block text-sm font-semibold text-gray-900">Vezetéknév*</label>
-            <input id="first-name" name="first-name" type="text" required autocomplete="family-name" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
-          </div>
-
-          <div>
-            <label for="last-name" class="block text-sm font-semibold text-gray-900">Keresztnév*</label>
-            <input id="last-name" name="last-name" type="text" required autocomplete="given-name" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
-          </div>
-
-          <!-- Cégnév -->
-          <div class="sm:col-span-2">
-            <label for="company" class="block text-sm font-semibold text-gray-900">Cégnév <span class="text-gray-500 text-sm">(opcionális)</span></label>
-            <input id="company" name="company" type="text" autocomplete="organization" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
-          </div>
-
-          <!-- E-mail -->
-          <div class="sm:col-span-2">
-            <label for="email" class="block text-sm font-semibold text-gray-900">Email*</label>
-            <input id="email" name="email" type="email" required autocomplete="email" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
-          </div>
-
-          <!-- Telefonszám -->
-          <div class="sm:col-span-2">
-            <label for="phone-number" class="block text-sm font-semibold text-gray-900">Telefonszám</label>
-            <input id="phone-number" name="phone-number" type="text" class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]">
-          </div>
-
-          <!-- Üzenet -->
-          <div class="sm:col-span-2">
-            <label for="message" class="block text-sm font-semibold text-gray-900">Üzenet*</label>
-            <textarea id="message" name="message" rows="4" required class="mt-2.5 block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 border border-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#2867a2]"></textarea>
-          </div>
-
-          <!-- Figyelmeztetés -->
-          <div class="sm:col-span-2">
-            <p class="text-sm text-gray-500">A *-gal jelölt mezők kitöltése kötelező.</p>
-          </div>
-
-          <!-- GDPR -->
-          <div class="flex items-center gap-x-4 sm:col-span-2">
-            <label for="agree-to-policies" class="relative inline-flex h-6 w-11 items-center cursor-pointer">
-              <input id="agree-to-policies" name="agree-to-policies" type="checkbox" class="peer sr-only" required>
-              <div class="w-full h-full rounded-full bg-gray-400 peer-checked:bg-[#2867a2] transition-colors duration-300"></div>
-              <span class="absolute left-1 top-1 size-4 rounded-full bg-white shadow ring-1 ring-gray-900/5 transition-transform duration-300 transform peer-checked:translate-x-5"></span>
-            </label>
-            <p class="text-sm text-gray-600">
-              Elfogadom az <a href="/adatkezelesi-tajekoztato.html" target="_blank" class="font-semibold text-[#2867a2] underline">Adatkezelési Tájékoztatót</a>.
-            </p>
-          </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="mt-10">
-          <button type="submit" class="bg-[#ebaf73] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#e49b50] transition">
-            Üzenet küldése →
-          </button>
-        </div>
-      </form>
-    </section>
+<?php include __DIR__ . '/includes/section-contact.php'; ?>
 
     <!--BLOG--------------------------->
-    <section id="blog" class="relative z-10 bg-white text-gray-950 px-4 sm:px-6 lg:px-8 py-24">
-      <div class="mx-auto max-w-7xl">
+    <section id="blog" class="relative z-10 bg-white text-gray-900 px-4 sm:px-6 lg:px-8 py-24">
+      <div class="mx-auto max-w-7xl text-center md:text-left">
         <div class="mx-auto max-w-2xl lg:mx-0">
-          <h2 class="section-title">Kiemelt blogbejegyzések</h2>
+          <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Kiemelt blogbejegyzések</h2>
           <p class="mt-2 text-lg/8 text-gray-600">Olvashatsz független gondolataimről az online jelenlét és üzleti növekedés témáiban.</p>
         </div>
         <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           
           <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
             <div class="flex items-center gap-x-4 text-xs">
-              <time datetime="2020-03-16" class="text-gray-500">2020. március 16.</time>
+              <time datetime="2025-08-03" class="text-gray-500">2025. augusztus 03.</time>
               <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
             </div>
             <div class="group relative grow">
@@ -633,7 +637,7 @@
 
           <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
             <div class="flex items-center gap-x-4 text-xs">
-              <time datetime="2020-03-10" class="text-gray-500">2020. március 10.</time>
+              <time datetime="2025-07-27" class="text-gray-500">2025. július 27.</time>
               <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Értékesítés</a>
             </div>
             <div class="group relative grow">
@@ -649,7 +653,7 @@
 
           <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
             <div class="flex items-center gap-x-4 text-xs">
-              <time datetime="2020-02-12" class="text-gray-500">2020. február 12.</time>
+              <time datetime="2025-07-20" class="text-gray-500">2025. július 20.</time>
               <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Üzlet</a>
             </div>
             <div class="group relative grow">
@@ -659,24 +663,22 @@
                   Hogyan javítsd a vásárlói élményt?
                 </a>
               </h3>
-              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Egyszerű lépések és eszközök a felhasználói élmény fejlesztésére – hogy ügyfeleid visszatérjenek.</p>
+              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Egyszerű lépések és eszközök a felhasználói élmény fejlesztésére, hogy ügyfeleid szívesen visszatérjenek az oldaladra.</p>
             </div>
           </article>
 
         </div>
       </div>
       <div class="mt-12 flex justify-center">
-      <a href="/blog" class="btn btn-outline">
+      <a href="/blog" class="bg-[#2867a2] text-white hover:bg-[#1f4f7e] block px-10 py-4 rounded-full text-lg font-medium transition-all duration-300 text-center">
         További bejegyzések
       </a>
     </div>
 
     </section>
 
-  <div data-include="includes/footer.html"></div>
-
     <!-- TECH STACK SECTION -->
-    <section class="bg-neutral-300 py-4 relative">
+    <section class="bg-gray-200/50 py-4 relative">
           <!-- Görgethető konténer -->
           <div class="overflow-x-auto hide-scrollbar">
             <div class="flex items-center justify-center lg:justify-center space-x-10 px-6 w-max lg:mx-auto h-8">
@@ -707,7 +709,11 @@
           </div>
     </section>
 
-<script src="/js/include.js"></script>
-<script src="/js/index.js" ></script>
+<?php include __DIR__ . '/includes/footer.html'; ?>
+
+<script src="/js/index.js" defer></script>
+<script src="/js/header-scripts.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
   </body>
 </html>

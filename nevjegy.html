@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Névjegy – Studio BGK | B. Gergely Kristóf</title>
+    <meta name="description" content="Ismerd meg a Studio BGK mögött álló B. Gergely Kristófot. Webfejlesztés a landingtől a komplex rendszerekig: stratégia, design, fejlesztés, SEO, automatizálás." />
+    <link rel="canonical" href="https://www.studiobgk.com/nevjegy" />
+    <meta property="og:title" content="Névjegy – Studio BGK" />
+    <meta property="og:description" content="Webfejlesztés a landingtől a komplex rendszerekig: stratégia, design, fejlesztés, SEO, automatizálás." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.studiobgk.com/nevjegy" />
+    <meta property="og:image" content="https://www.studiobgk.com/assets/og/nevjegy.jpg" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <style>
+      body { font-family: 'Space Grotesk', sans-serif; }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    
+  </head>
+  <body class="bg-[#e3e7ec] text-gray-900 overflow-x-hidden relative">
+    <?php include __DIR__ . '/includes/header.html'; ?>
+
+
+
+    <!-- INTRO / MISSION -->
+<section class="bg-gray-200 px-4 sm:px-6 lg:px-8 py-20">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+    <!-- Bal: szöveg (szélesebb) -->
+    <div class="md:col-span-7">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">„célom a teljesség”</h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed text-justify">
+        Ahhoz, hogy valami igazán működjön, rendszerben kell gondolkodni. Legyen szó a teljes online jelenlétünkről, vagy egy ügyfélszerző kampányról.
+      </p>
+
+      <p class="mt-5 text-lg text-gray-700 leading-relaxed text-justify">
+        A nevem B. Gergely Kristóf. Teljes online jelenlétet építek az első ötlettől, a kézzelfogható eredményekig. Webfejlesztőként és minősített online marketing szakemberként mindent lefedő tudással rendelkezem ahhoz, hogy segítsek meghódítani vállalkozásodnak a digitális világot!
+      </p>
+
+      <p class="mt-5 text-lg text-gray-700 leading-relaxed text-justify">
+        Egyedül dolgozom, tudatosan limitált kapacitással. Ez nem hátrány, hanem előny: mély fókuszt, gyors döntéseket, közvetlen kommunikációt és valódi felelősségvállalást jelent. Nem „sorban gyártott” megoldásokat adok, hanem olyan munkát, ami érti a célodat, illeszkedik a márkádhoz, és hosszú távon is megtartja az értékét.
+      </p>
+
+      <p class="mt-5 text-lg text-gray-700 leading-relaxed text-justify">
+        Ha együtt dolgozunk, egy tiszta rendszerben haladunk: felrajzoljuk az irányt, felépítjük a megjelenést, létrehozzuk a webes élményt, majd megtámogatjuk tudatos online marketinggel. Így lesz a webes jelenlétedből valódi üzleti eszköz, nem csak egy szép felület.
+      </p>
+
+      <p class="mt-5 text-lg text-gray-700 leading-relaxed text-justify">
+        <strong>A siker a részleteken múlik!</strong>
+      </p>
+    </div>
+<!-- Jobb: profilkép + CTA -->
+<div class="md:col-span-5 flex flex-col items-center md:items-end">
+  <div class="relative w-64 h-64 sm:w-72 sm:h-72">
+    <div class="absolute inset-0 rounded-2xl p-1">
+      <div class="rounded-2xl w-full h-full bg-white shadow-md">
+        <img
+          src="/assets/images/profile.webp"
+          alt="B. Gergely Kristóf — Studio BGK"
+          class="w-full h-full object-cover rounded-xl"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <a
+    href="#contact"
+    aria-label="Kapcsolatfelvétel – Küldj üzenetet!"
+    class="mt-6 inline-flex items-center justify-center w-full md:w-auto bg-[#ebaf73] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#e49b50] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ebaf73] transition"
+  >
+    Küldj üzenetet!
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 -mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+    </svg>
+  </a>
+  <p class="mt-2 text-xs text-gray-600 md:text-right">24 órán belül válaszolok</p>
+</div>
+  </div>
+</section>
+
+
+<section id="faq" class="relative bg-gradient-to-b from-gray-200 to-white text-gray-900 py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Gyakori kérdések</h2>
+    </div>
+
+    <!-- Accordion konténer -->
+    <div class="divide-y divide-gray-200 rounded-2xl bg-white shadow-sm overflow-hidden">
+
+      <!-- 1 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors first:rounded-t-2xl">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <!-- Csak zárt állapotban: hover kék -->
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Miről szól a Studio BGK?
+            </span>
+            <!-- Nyitott állapotban: fix fehér, hover nélkül -->
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Miről szól a Studio BGK?
+            </span>
+          </div>
+          <!-- Ikon zárt állapotban (hover kék) -->
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <!-- Ikon nyitott állapotban (fix fehér, 180°) -->
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Egy vízióm megvalósítása a márka keretein belül. Szeretném az eddigi tapasztalataimat és tudásomat arra használni, hogy vállalkozóknak segítsek több ügyfelet szerezni!
+        </div>
+      </details>
+
+      <!-- 2 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Kinek szólnak a szolgáltatásaid?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Kinek szólnak a szolgáltatásaid?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Elsősorban szolgáltatásalapú vállalkozásokkal dolgozom Online, így a lokáció nem releváns. Különösen nagyon szeretem a kreatív, értékteremtő márkákat.
+        </div>
+      </details>
+
+      <!-- 3 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Hogyan indul a közös munka és milyen lépésekre számíthatok?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Hogyan indul a közös munka és milyen lépésekre számíthatok?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Célfeltáró beszélgetés után stratégiát és ütemezést készítek. Ezután design és fejlesztés majd tesztelés és finomhangolás következik. Végül átadás és betanítás.
+        </div>
+      </details>
+
+      <!-- 4 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Mennyi idő alatt készül el egy üzleti weboldal?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Mennyi idő alatt készül el egy üzleti weboldal?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Egylapos oldal jellemzően 1-2 hét. Többoldalas vagy egyedi funkciókkal rendelkező rendszer 4-6 hét körül várható a tartalom és a döntések függvényében. A pontosabb átadási időt a stratégiai tervezéskor kalkuláljuk ki.
+        </div>
+      </details>
+
+      <!-- 5 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Mennyibe kerülnek a szolgáltatásaid?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Mennyibe kerülnek a szolgáltatásaid?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Minden projekt egyedi ezért egyedi ajánlatot adok. Ezek mellett teljesen transzparensen kommunikálok az áraimról, az első egyeztetésünk alkalmával bemutatok neked egy részletes, szolgáltatásokra bontott árlistát is.
+        </div>
+      </details>
+
+      <!-- 6 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Van lehetőség részletfizetésre?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Van lehetőség részletfizetésre?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Igen. A legtöbb esetben előleg és mérföldkövek szerint tudsz fizetni két vagy három ütemben.
+        </div>
+      </details>
+
+      <!-- 7 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Mobilbarát és gyors lesz az oldalam?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Mobilbarát és gyors lesz az oldalam?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Igen. Reszponzív elrendezést és modern technológiákat használok. Cél az A plusz PageSpeed érték jó LCP és valós gyors működés.
+        </div>
+      </details>
+
+      <!-- 8 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Segítesz a domain a tárhely vagy az e mail beállításában?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Segítesz a domain a tárhely vagy az e mail beállításában?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Igen. Kezelem a domaint a DNS beállítást a tárhelyet az SSL tanúsítványt és az e mail fiókokat. Mindent dokumentálok.
+        </div>
+      </details>
+
+      <!-- 9 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Mit jelent az alap keresőoptimalizálás és mikor van szükség folyamatos SEO munkára?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Mit jelent az alap keresőoptimalizálás és mikor van szükség folyamatos SEO munkára?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Az alap SEO része a technikai rendbetétel, a strukturált címkézés, a meta elemek, a gyorsaság és a reszponzivitás. Folyamatos SEO esetén kulcsszókutatást, tartalomstratégiát és tartalomkészítést biztosítok.
+        </div>
+      </details>
+
+      <!-- 10 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Kezeled a Google és a Meta hirdetéseimet?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Kezeled a Google és a Meta hirdetéseimet?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Igen. Beállítom a fiókokat, a mérést és a konverziókövetést. Stratégiát készítek, kreatívokat gyártok és rendszeresen optimalizálok.
+        </div>
+      </details>
+
+      <!-- 11 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Vállalsz karbantartást és támogatást az átadás után?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Vállalsz karbantartást és támogatást az átadás után?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Igen. Többszintű karbantartási csomag közül választhatsz. Frissítések, biztonság, gyorsaság, kisebb módosítások és tartalomfeltöltés is kérhető.
+        </div>
+      </details>
+
+      <!-- 12 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Milyen anyagokkal érdemes készülnöm az induláshoz?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Milyen anyagokkal érdemes készülnöm az induláshoz?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Rövid bemutatkozás, szolgáltatáslista, referenciák, elérhetőségek és ha van márkaanyag. Jogi dokumentumok például adatkezelési tájékoztató és ÁSZF. Természetesen ezek hiányában bármiben segítek.
+        </div>
+      </details>
+
+      <!-- 13 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Vállalsz rendszerintegrációt és automatizálást AI megoldásokkal?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Vállalsz rendszerintegrációt és automatizálást AI megoldásokkal?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          Igen. Összekötöm az űrlapokat az e maillel, a CRM rendszerrel, a naptárral, a számlázóval és a hírlevél szoftverrel. AI alapú chatbot és asszisztens is kérhető.
+        </div>
+      </details>
+
+      <!-- 14 -->
+      <details class="group bg-white open:bg-[#2867a2] open:text-white transition-colors last:rounded-b-2xl">
+        <summary class="list-none cursor-pointer select-none px-6 py-5 flex items-start justify-between gap-6">
+          <div class="flex-1">
+            <span class="block text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-[#2867a2] group-open:hidden">
+              Hol és hogyan tudok a leggyorsabban ajánlatot kérni?
+            </span>
+            <span class="hidden group-open:block text-base sm:text-lg font-semibold text-white">
+              Hol és hogyan tudok a leggyorsabban ajánlatot kérni?
+            </span>
+          </div>
+          <svg class="mt-1 size-5 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#2867a2] group-open:hidden"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <svg class="mt-1 size-5 shrink-0 text-white transition-all duration-300 hidden group-open:block rotate-180"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed transition-colors group-open:text-white">
+          A leggyorsabb az űrlap. Kattints a kapcsolat menüpontra vagy görgess az oldal aljára és írd le röviden a céljaidat. Minden megkeresésre 24 órán belül válaszolok.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const accordions = document.querySelectorAll('#faq details');
+    accordions.forEach((el) => {
+      el.addEventListener('toggle', () => {
+        if (el.open) {
+          accordions.forEach((other) => { if (other !== el) other.open = false; });
+        }
+      });
+    });
+  });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Miről szól a Studio BGK?","acceptedAnswer":{"@type":"Answer","text":"Egy vízióm megvalósítása a márka keretein belül. Szeretném az eddigi tapasztalataimat és tudásomat arra használni, hogy vállalkozóknak segítsek több ügyfelet szerezni!"}},
+    {"@type":"Question","name":"Kinek szólnak a szolgáltatásaid?","acceptedAnswer":{"@type":"Answer","text":"Elsősorban szolgáltatásalapú vállalkozásokkal dolgozom Online, így a lokáció nem releváns. Különösen nagyon szeretem a kreatív, értékteremtő márkákat."}},
+    {"@type":"Question","name":"Hogyan indul a közös munka és milyen lépésekre számíthatok?","acceptedAnswer":{"@type":"Answer","text":"Célfeltáró beszélgetés után stratégiát és ütemezést készítek. Ezután design és fejlesztés majd tesztelés és finomhangolás következik. Végül átadás és betanítás."}},
+    {"@type":"Question","name":"Mennyi idő alatt készül el egy üzleti weboldal?","acceptedAnswer":{"@type":"Answer","text":"Egylapos oldal jellemzően 1-2 hét. Többoldalas vagy egyedi funkciókkal rendelkező rendszer 4-6 hét körül várható a tartalom és a döntések függvényében. A pontosabb átadási időt a stratégiai tervezéskor kalkuláljuk ki."}},
+    {"@type":"Question","name":"Mennyibe kerülnek a szolgáltatásaid?","acceptedAnswer":{"@type":"Answer","text":"Minden projekt egyedi ezért egyedi ajánlatot adok. Ezek mellett teljesen transzparensen kommunikálok az áraimról, az első egyeztetésünk alkalmával bemutatok neked egy részletes, szolgáltatásokra bontott árlistát is."}},
+    {"@type":"Question","name":"Van lehetőség részletfizetésre?","acceptedAnswer":{"@type":"Answer","text":"Igen. A legtöbb esetben előleg és mérföldkövek szerint tudsz fizetni két vagy három ütemben."}},
+    {"@type":"Question","name":"Mobilbarát és gyors lesz az oldalam?","acceptedAnswer":{"@type":"Answer","text":"Igen. Reszponzív elrendezést és modern technológiákat használok. Cél az A plusz PageSpeed érték jó LCP és valós gyors működés."}},
+    {"@type":"Question","name":"Segítesz a domain a tárhely vagy az e mail beállításában?","acceptedAnswer":{"@type":"Answer","text":"Igen. Kezelem a domaint a DNS beállítást a tárhelyet az SSL tanúsítványt és az e mail fiókokat. Mindent dokumentálok."}},
+    {"@type":"Question","name":"Mit jelent az alap keresőoptimalizálás és mikor van szükség folyamatos SEO munkára?","acceptedAnswer":{"@type":"Answer","text":"Az alap SEO része a technikai rendbetétel, a strukturált címkézés, a meta elemek, a gyorsaság és a reszponzivitás. Folyamatos SEO esetén kulcsszókutatást, tartalomstratégiát és tartalomkészítést biztosítok."}},
+    {"@type":"Question","name":"Kezeled a Google és a Meta hirdetéseimet?","acceptedAnswer":{"@type":"Answer","text":"Igen. Beállítom a fiókokat, a mérést és a konverziókövetést. Stratégiát készítek, kreatívokat gyártok és rendszeresen optimalizálok."}},
+    {"@type":"Question","name":"Vállalsz karbantartást és támogatást az átadás után?","acceptedAnswer":{"@type":"Answer","text":"Igen. Többszintű karbantartási csomag közül választhatsz. Frissítések, biztonság, gyorsaság, kisebb módosítások és tartalomfeltöltés is kérhető."}},
+    {"@type":"Question","name":"Milyen anyagokkal érdemes készülnöm az induláshoz?","acceptedAnswer":{"@type":"Answer","text":"Rövid bemutatkozás, szolgáltatáslista, referenciák, elérhetőségek és ha van márkaanyag. Jogi dokumentumok például adatkezelési tájékoztató és ÁSZF. Természetesen ezek hiányában bármiben segítek."}},
+    {"@type":"Question","name":"Vállalsz rendszerintegrációt és automatizálást AI megoldásokkal?","acceptedAnswer":{"@type":"Answer","text":"Igen. Összekötöm az űrlapokat az e maillel, a CRM rendszerrel, a naptárral, a számlázóval és a hírlevél szoftverrel. AI alapú chatbot és asszisztens is kérhető."}},
+    {"@type":"Question","name":"Hol és hogyan tudok a leggyorsabban ajánlatot kérni?","acceptedAnswer":{"@type":"Answer","text":"A leggyorsabb az űrlap. Kattints a kapcsolat menüpontra vagy görgess az oldal aljára és írd le röviden a céljaidat. Minden megkeresésre 24 órán belül válaszolok."}}
+  ]
+}
+</script>
+
+<?php include __DIR__ . '/includes/section-contact.php'; ?>
+
+<?php include __DIR__ . '/includes/footer.html'; ?>
+
+
+
+    <!-- Finom animációk -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.gsap && window.ScrollTrigger) {
+          gsap.utils.toArray('section').forEach((sec) => {
+            gsap.fromTo(sec.querySelectorAll('h1,h2,h3,p,details,div,li'),
+              {opacity: 0, y: 20},
+              {opacity: 1, y: 0, stagger: 0.06, duration: 0.6, ease: 'power2.out',
+               scrollTrigger: {trigger: sec, start: 'top 80%'}});
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
