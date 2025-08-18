@@ -77,9 +77,11 @@ $services = [
 
     <!-- Tailwind + font -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">   
     <style>
-      body { font-family: 'Space Grotesk', sans-serif; }
+      body { font-family: 'Roboto', sans-serif; }
       .reveal { opacity:0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
       .reveal.in { opacity:1; transform: none; }
       .tab-active-underline:after{

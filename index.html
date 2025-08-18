@@ -1,169 +1,375 @@
 <!DOCTYPE html>
 <html lang="hu" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio Tailwind</title>
-   <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Space Grotesk', sans-serif;
-      }
-      .no-scroll {
-        overflow: hidden;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--STUDIO BGK SEO PLUGIN-->
+  <title>Garantált ügyfélszerzés: weboldal, marketing, arculat - Studio BGK</title>
+  <meta name="description" content="Ügyfélszerzésre tervezett digitális jelenlét, weboldal készítés, teljes körű online marketing, konverzióközpontú megoldások vállalkozásoknak - Studio BGK" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.studiobgk.com/" />
 
-      .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      
-  body.lock-scroll {
-    overflow: hidden;
-  }
+  <link rel="alternate" hreflang="hu" href="https://www.studiobgk.com/" />
 
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.studiobgk.com/" />
+  <meta property="og:title" content="Garantált ügyfélszerzés: weboldal, online marketing, arculat - Studio BGK" />
+  <meta property="og:description" content="Ügyfélszerzésre tervezett digitális jelenlét, online marketing, weboldal készítés." />
+  <meta property="og:image" content="https://www.studiobgk.com/assets/og/studio-bgk-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Garantált ügyfélszerzés: weboldal, online marketing, arculat - Studio BGK" />
+  <meta property="og:site_name" content="Studio BGK" />
+  <meta property="og:locale" content="hu_HU">
 
-</style>
-<style>
-/* Billboard villanás + hairline fix – azonnali override */
-.billboard { perspective: 1200px; }
-.billboard-grid{ position:absolute; inset:0; display:grid; gap:0; }
-.billboard-col{ position:relative; transform-style:preserve-3d; transition:transform 600ms cubic-bezier(.22,.61,.36,1); outline:1px solid transparent; }
-.billboard-col.is-flipping{ transform: rotateY(180deg); }
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Garantált ügyfélszerzés: weboldal, online marketing, arculat - Studio BGK" />
+  <meta name="twitter:description" content="Ügyfélszerzésre tervezett digitális jelenlét, online marketing, weboldal készítés." />
+  <meta name="twitter:image" content="https://www.studiobgk.com/assets/og/studio-bgk-og.jpg" />
 
-.billboard-face{
-  position:absolute; inset:0;
-  backface-visibility:hidden; -webkit-backface-visibility:hidden;
-  background-repeat:no-repeat;
-  background-size: calc(var(--cols) * 100%) 100%;
-  background-position: calc(var(--i) * (100% / (var(--cols) - 1))) 50%;
-  transform: translateZ(0.12px); /* nagyobb Z, hogy a hajszálcsík eltűnjön */
-  will-change: transform, opacity;
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="theme-color" content="#2867a2" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+<!--STUDIO BGK SEO PLUGIN END-->
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+ <link rel="preload" as="image" href="/assets/hero/hero-poster.webp" />
+  <link rel="preload" as="image" href="/assets/hero/hero-poster.jpg" />
+
+  <!-- Tailwind – PROD-ban KÉSZRE FORDÍTOTT CSS-t használj (purge-ölt) -->
+  <!-- <link rel="preload" href="/assets/css/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/css/style.css" /> -->
+
+  <!-- FEJLESZTÉSI módban maradhat a CDN, de PROD-ban távolítsd el -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    body { font-family: 'Roboto', sans-serif; }
+    .no-scroll{ overflow: hidden; }
+    .hide-scrollbar::-webkit-scrollbar{ display:none; }
+    .hide-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+    body.lock-scroll{ overflow:hidden; }
+    @media (prefers-reduced-motion: reduce){ #heroSection video{ display:none } }
+  </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization","ProfessionalService"],
+      "@id": "https://www.studiobgk.com/#org",
+      "name": "Studio BGK",
+      "url": "https://www.studiobgk.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.studiobgk.com/assets/favicon/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      },
+      "image": "https://www.studiobgk.com/assets/og/studio-bgk-og.jpg",
+      "description": "Ügyfélszerzésre tervezett digitális jelenlét, weboldal készítés, teljes körű online marketing, konverzióközpontú megoldások vállalkozásoknak.",
+      "areaServed": "HU",
+      "brand": "Studio BGK"
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://www.studiobgk.com/#catalog-main",
+      "name": "Studio BGK – Fő szolgáltatások",
+      "url": "https://www.studiobgk.com/#services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Digitális stratégia",
+            "serviceType": "Digitális stratégia",
+            "description": "Teljes kommunikációs és csatorna-stratégia, célcsoport és funnel tervezés, KPI-ok, ütemezés.",
+            "url": "https://www.studiobgk.com/#services",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Arculattervezés",
+            "serviceType": "Branding és vizuális arculat",
+            "description": "Vizuális rendszer: logó, színek, tipográfia, arculati kézikönyv; online és offline egység.",
+            "url": "https://www.studiobgk.com/#services",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Weboldalkészítés",
+            "serviceType": "Egyedi, konverzióközpontú webfejlesztés",
+            "description": "Reszponzív, gyors, SEO-barát oldalak modern technológiákkal; analitika és mérés.",
+            "url": "https://www.studiobgk.com/#services",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Online marketing",
+            "serviceType": "Teljes körű online marketing",
+            "description": "Kampánytervezés, hirdetéskezelés (Google/Meta), tartalom és CRO; riportálás.",
+            "url": "https://www.studiobgk.com/#services",
+            "areaServed": "HU"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://www.studiobgk.com/#catalog-sub",
+      "name": "Studio BGK – Alszolgáltatások",
+      "url": "https://www.studiobgk.com/#sub-services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Technikai tanácsadás",
+            "description": "Tárhely, domain, DNS, e-mail, biztonság, sebesség, stabil infrastruktúra felépítése.",
+            "url": "https://www.studiobgk.com/#sub-services",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Keresőoptimalizálás (SEO)",
+            "description": "Technikai és tartalmi SEO: performance, reszponzivitás, kulcsszókutatás, meta és IA.",
+            "url": "https://www.studiobgk.com/#sub-services",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Automatizálás / AI",
+            "description": "Űrlapok, e-mail, CRM, naptár, számlázás integrációk AI-val turbózva.",
+            "url": "https://www.studiobgk.com/#sub-services",
+            "areaServed": "HU"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://www.studiobgk.com/#catalog-packages",
+      "name": "Studio BGK – Csomagok",
+      "url": "https://www.studiobgk.com/#packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "BGK Start",
+            "description": "Kezdő csomag: egylapos site, domain+tárhely beállítás, alap arculat, űrlap, mobil optimalizálás.",
+            "url": "https://www.studiobgk.com/#packages",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "BGK Boost",
+            "description": "Növekedési csomag: többoldalas egyedi site, SEO alapok, elemzés+struktúra, egyedi arculat, analitika.",
+            "url": "https://www.studiobgk.com/#packages",
+            "areaServed": "HU"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "BGK Scale",
+            "description": "Komplex csomag: teljes stratégia, automatizált ügyfélkezelés, AI, hirdetési fiókok, összekötés+betanítás.",
+            "url": "https://www.studiobgk.com/#packages",
+            "areaServed": "HU"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.studiobgk.com/#featured-posts",
+      "name": "Kiemelt blogbejegyzések",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://www.studiobgk.com/blog/posts/online-konverzio",
+          "name": "Hogyan növeld az online konverziót?"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://www.studiobgk.com/blog/posts/seo-ertekesites",
+          "name": "Hogyan használd a keresőoptimalizálást az értékesítéshez?"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://www.studiobgk.com/blog/posts/vasarloi-elmeny",
+          "name": "Hogyan javítsd a vásárlói élményt?"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.studiobgk.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Főoldal",
+          "item": "https://www.studiobgk.com/"
+        }
+      ]
+    }
+  ]
 }
-.billboard-face.back{
-  transform: rotateY(180deg) translateZ(0.08px);
-  opacity:0;           /* fontos! ne villanjon fel a következő kép */
-}
-.billboard-col.is-flipping .billboard-face.back{ opacity:1; } /* csak flip közben látszódjon */
-</style>
-  </head>
+</script>
+
+</head>
+
   <body class="bg-[#e3e7ec] text-gray-900 overflow-x-hidden relative">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2
+  focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded">Ugrás a tartalomra</a>
+
     <!-- Header -->
   <?php include __DIR__ . '/includes/header.html'; ?>
 
     <!-- Hero Section ----------------->
-<section id="heroSection" class="relative z-20 bg-white text-gray-900 pt-24 sm:pt-32 pb-24 sm:pb-32 px-4 sm:px-6 lg:px-8 rounded-t-[3rem] transition-all duration-500 ease-in-out">
-  <!-- Video háttér -->
-  <video autoplay muted loop playsinline poster="/assets/hero-fallback.jpg"
-    class="absolute inset-0 w-full h-full object-cover -z-10 rounded-t-[3rem]">
-    <source src="/assets/videos/hero.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <section id="heroSection" class="relative z-20 bg-white text-gray-900 pt-24 sm:pt-32 pb-24 sm:pb-32 px-4 sm:px-6 lg:px-8 rounded-t-[3rem] transition-all duration-500 ease-in-out">
+    <video
+      class="absolute inset-0 w-full h-full object-cover -z-10 rounded-t-[3rem]"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/assets/hero/hero-poster.webp"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <source src="/assets/hero/hero.webm" type="video/webm" />
+      <source src="/assets/hero/hero.mp4" type="video/mp4" />
+    </video>
 
-  <!-- Overlay rétegek -->
-  <div class="absolute inset-0 bg-[#f3f3f3]/50 backdrop-blur-sm -z-10 rounded-t-[3rem]"></div>
-  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(240,240,240,0.6)_0%,transparent_70%)] rounded-t-[3rem]"></div>
+    <div class="absolute inset-0 bg-[#f3f3f3]/50 backdrop-blur-sm -z-10 rounded-t-[3rem]"></div>
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(240,240,240,0.6)_0%,transparent_70%)] rounded-t-[3rem]"></div>
 
-  <!-- Tartalom -->
-<div class="max-w-4xl mx-auto text-center">
-  <h1 class="opacity-0 animate-fade-in text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6" style="animation-delay: 0.2s;">
-    <span class="uppercase border-b-4 border-[#ebaf73] pb-1 mb-2 inline-block">Garantált</span><br>
-    ügyfélszerzés, modern digitális megoldásokkal
-  </h1>
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="opacity-0 animate-fade-in text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6" style="animation-delay: 0.2s;">
+      <span class="uppercase border-b-4 border-[#ebaf73] pb-1 mb-2 inline-block">Garantált</span><br>
+      ügyfélszerzés, modern digitális megoldásokkal
+    </h1>
 
-  <h2 class="opacity-0 animate-fade-in text-base sm:text-lg text-gray-900 max-w-2xl mx-auto mb-8" style="animation-delay: 0.2s;">
-    Teljes körű online marketing, arculat- és webes alkalmazásfejlesztés vállalkozásoknak
-  </h2>
+    <h2 class="opacity-0 animate-fade-in text-base sm:text-lg text-gray-900 max-w-2xl mx-auto mb-8" style="animation-delay: 0.2s;">
+      Teljes körű online marketing, arculat- és webes alkalmazásfejlesztés vállalkozásoknak
+    </h2>
 
-  <a href="#contact"
-     class="opacity-0 animate-fade-in-then-scale inline-block bg-[#ebaf73] text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-[#e49b50] transition"
-     style="animation-delay: 1s;">
-    Dolgozzunk együtt!
-  </a>
-</div>
+    <a href="#contact"
+      class="opacity-0 animate-fade-in-then-scale inline-block bg-[#ebaf73] text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-[#e49b50] transition"
+      style="animation-delay: 1s;">
+      Dolgozzunk együtt!
+    </a>
+  </div>
 
-
-
-</section>
-
-
+  </section>
+<main id="main">
     <!-- Bemutatkozó szekció ------------------->
-<section id="mit-csinalunk" class="relative z-10 bg-white text-gray-900 px-4 sm:px-6 lg:px-8 py-24">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+  <section id="about" class="relative z-10 bg-white text-gray-900 px-4 sm:px-6 lg:px-8 py-24">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-    <!-- Jobb oldal (kisebb képernyőn felül) -->
-    <div class="order-1 md:order-2 flex flex-col self-start text-center md:text-left">
-      <h2 class=" opacity-0  text-4xl sm:text-5xl font-bold mb-6" data-anim="fade" data-delay="0" >
-        <span class="relative inline-block">
-          <span class="text-gray-900 ">„célom a <span class="italic font-bold">teljesség</span>”</span>
-          <!-- dísz idézőjel (nem kötelező) -->
-        </span>
-      </h2>
+      <!-- Jobb oldal (kisebb képernyőn felül) -->
+      <div class="order-1 md:order-2 flex flex-col self-start text-center md:text-left">
+        <h2 class=" opacity-0  text-4xl sm:text-5xl font-bold mb-6" data-anim="fade" data-delay="0" >
+          <span class="relative inline-block">
+            <span class="text-gray-900 ">„célom a <span class="italic font-bold">teljesség</span>”</span>
+          </span>
+        </h2>
 
-      <p class="opacity-0 text-lg leading-relaxed mb-8 md:mb-10 text-justify text-gray-600" data-anim="fade" data-delay="0.2" >
-        Ahhoz, hogy valami igazán működjön, rendszerben kell gondolkodni. Legyen szó a teljes online jelenlétünkről, vagy egy ügyfélszerző kampányról.
-        <br><strong class="text-gray-900">A siker a részleteken múlik!</strong>
-      </p>
+        <p class="opacity-0 text-lg leading-relaxed mb-8 md:mb-10 text-justify text-gray-600" data-anim="fade" data-delay="0.2" >
+          Ahhoz, hogy valami igazán működjön, rendszerben kell gondolkodni. Legyen szó a teljes online jelenlétünkről, vagy egy ügyfélszerző kampányról.
+          <br><strong class="text-gray-900">A siker a részleteken múlik!</strong>
+        </p>
 
-      <a href="#about"
-         class="opacity-0 inline-block px-10 py-4 rounded-full text-lg font-medium
-                 transition-all duration-300 text-center bg-[#2867a2] text-white hover:bg-[#1f4f7e]"
-         data-anim="fade" data-delay="0.4" 
-         aria-label="Bővebben rólam">
-        Bővebben...
-      </a>
+        <a href="#about"
+          class="opacity-0 inline-block px-10 py-4 rounded-full text-lg font-medium
+                  transition-all duration-300 text-center bg-[#2867a2] text-white hover:bg-[#1f4f7e]"
+          data-anim="fade" data-delay="0.4" 
+          aria-label="Bővebben rólam">
+          Bővebben...
+        </a>
+      </div>
+
+      <!-- Bal oldal (kisebb képernyőn alul) -->
+      <div class="order-2 md:order-1 flex flex-col self-start text-center md:text-left">
+        <h2 class="opacity-0 text-4xl sm:text-5xl font-bold mb-6 " data-anim="fade" data-delay="0">
+          <span class="italic font-bold text-black">Mit</span> fogunk csinálni?
+        </h2>
+
+        <p class="opacity-0 text-lg leading-relaxed mb-8 md:mb-10 text-justify text-gray-600" data-anim="fade" data-delay="0.2">
+          Röviden:<br>
+          Online rendszereket építünk, amik pénzt termelnek a vállalkozásodnak.<br><br>
+          Céloknak megfelelő weboldalak,<br>
+          értékesítést támogató marketing rendszerek,<br>
+          erős, hiteles vizuális arculat.
+          <br><strong class="text-gray-900">Minden ami számít, <span class="italic">egy helyen, egy kézben!</span></strong>
+        </p>
+      </div>
+
     </div>
 
-    <!-- Bal oldal (kisebb képernyőn alul) -->
-    <div class="order-2 md:order-1 flex flex-col self-start text-center md:text-left">
-      <h2 class="opacity-0 text-4xl sm:text-5xl font-bold mb-6 " data-anim="fade" data-delay="0">
-        <span class="italic font-bold text-black">Mit</span> fogunk csinálni?
-      </h2>
-
-      <p class="opacity-0 text-lg leading-relaxed mb-8 md:mb-10 text-justify text-gray-600" data-anim="fade" data-delay="0.2">
-        Röviden:<br>
-        Online rendszereket építünk, amik pénzt termelnek a vállalkozásodnak.<br><br>
-        Céloknak megfelelő weboldalak,<br>
-        értékesítést támogató marketing rendszerek,<br>
-        erős, hiteles vizuális arculat.
-        <br><strong class="text-gray-900">Minden ami számít, <span class="italic">egy helyen, egy kézben!</span></strong>
-      </p>
-    </div>
-
-  </div>
-
-  <!-- Bizalmi sor -->
-  <div class="max-w-7xl mx-auto mt-12 md:mt-16">
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-      <div class=" opacity-0" data-anim="fade" data-delay="0">
-        <p class="text-3xl font-bold text-[#ebaf73]">99%</p>
-        <p class="text-xs text-gray-600">ügyfél-elégedettség</p>
-      </div>
-      <div class=" opacity-0" data-anim="fade" data-delay="0">
-        <p class="text-3xl font-bold text-[#ebaf73]">120+</p>
-        <p class="text-xs text-gray-600">lezárt fejlesztés</p>
-      </div>
-      <div class="opacity-0" data-anim="fade" data-delay="0">
-        <p class="text-3xl font-bold text-[#ebaf73]">&lt; 1s</p>
-        <p class="text-xs text-gray-600">LCP cél weben</p>
-      </div>
-      <div class="opacity-0" data-anim="fade" data-delay="0">
-        <p class="text-3xl font-bold text-[#ebaf73]">A+</p>
-        <p class="text-xs text-gray-600">PageSpeed cél</p>
+    <!-- Bizalmi sor -->
+    <div class="max-w-7xl mx-auto mt-12 md:mt-16">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div class=" opacity-0" data-anim="fade" data-delay="0">
+          <p class="text-3xl font-bold text-[#ebaf73]">99%</p>
+          <p class="text-xs text-gray-600">ügyfél-elégedettség</p>
+        </div>
+        <div class=" opacity-0" data-anim="fade" data-delay="0">
+          <p class="text-3xl font-bold text-[#ebaf73]">120+</p>
+          <p class="text-xs text-gray-600">lezárt fejlesztés</p>
+        </div>
+        <div class="opacity-0" data-anim="fade" data-delay="0">
+          <p class="text-3xl font-bold text-[#ebaf73]">&lt; 1s</p>
+          <p class="text-xs text-gray-600">LCP cél weben</p>
+        </div>
+        <div class="opacity-0" data-anim="fade" data-delay="0">
+          <p class="text-3xl font-bold text-[#ebaf73]">A+</p>
+          <p class="text-xs text-gray-600">PageSpeed cél</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
     <!-- SZOLGÁLTATÁSOK VÉGLEGES ----------------------->
-    <section class="bg-gradient-to-b from-white to-gray-200 px-4 sm:px-6 lg:px-8 py-24 text-gray-900">
+    <section id="services" class="bg-gradient-to-b from-white to-gray-200 px-4 sm:px-6 lg:px-8 py-24 text-gray-900">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
 
         <!-- Jobb oszlop – szolgáltatáslista -->
@@ -175,22 +381,38 @@
 
               <!-- Lista -->
               <div class="space-y-8">
-                <div class="border-l-2 border-[#ebaf73] pl-4">
-                  <h3 class="font-semibold text-lg">Digitális stratégia</h3>
-                  <h4 class="text-gray-600 text-justify">Kezdésképp megtervezzük a teljes kommunikációdat és az ügyfeleid pontos elérésének a módját</h4>
-                </div>
-                <div class="border-l-2 border-[#ebaf73] pl-4">
-                  <h3 class="font-semibold text-lg">Arculattervezés</h3>
-                  <h4 class="text-gray-600 text-justify">Ezután kialakítjuk azt a minőségi megjelenést, ami maximálisan tudja képviselni cégedet online és offline is</h4>
-                </div>
-                <div class="border-l-2 border-[#ebaf73] pl-4">
-                  <h3 class="font-semibold text-lg">Weboldalkészítés</h3>
-                  <h4 class="text-gray-600 text-justify">A következő lépésben elkészül a weboldal, ahol a vásárlóid elérhetik szolgáltatásaidat. Alapvetően minden honlap a legfrissebb technológiákat alkalmazva, kódszinten épül fel</h4>
-                </div>
-                <div class="border-l-2 border-[#ebaf73] pl-4">
-                  <h3 class="font-semibold text-lg">Online marketing</h3>
-                  <h4 class="text-gray-600 text-justify">Végezetül mindent bevetünk a maximális konverzióért</h4>
-                </div>
+            <div id="service-digitalis-strategia" class="border-l-2 border-[#2867a2] pl-4">
+              <h3 class="font-semibold text-lg">Digitális stratégia</h3>
+              <p class="text-gray-600 text-justify">
+                Kezdésképp megtervezzük a teljes kommunikációdat és az ügyfeleid pontos elérésének a módját.
+              </p>
+              <a href="#contact" class="inline-block mt-2 text-[#ebaf73] hover:text-[#e49b50]"
+                aria-label="Ajánlatkérés – Digitális stratégia">Ajánlatot kérek!</a>
+            </div>
+            <div id="service-arculattervezes" class="border-l-2 border-[#2867a2] pl-4">
+              <h3 class="font-semibold text-lg">Arculattervezés</h3>
+              <p class="text-gray-600 text-justify">
+                Minőségi megjelenés, ami online és offline is hitelesen képvisel.
+              </p>
+              <a href="#contact" class="inline-block mt-2 text-[#ebaf73] hover:text-[#e49b50]"
+                aria-label="Ajánlatkérés – Arculattervezés">Ajánlatot kérek!</a>
+            </div>
+            <div id="service-weboldalkeszites" class="border-l-2 border-[#2867a2] pl-4">
+              <h3 class="font-semibold text-lg">Weboldalkészítés</h3>
+              <p class="text-gray-600 text-justify">
+                Gyors, reszponzív, SEO-barát weboldal kódszinten.
+              </p>
+              <a href="#contact" class="inline-block mt-2 text-[#ebaf73] hover:text-[#e49b50]"
+                aria-label="Ajánlatkérés – Weboldalkészítés">Ajánlatot kérek!</a>
+            </div>
+            <div id="service-online-marketing" class="border-l-2 border-[#2867a2] pl-4">
+              <h3 class="font-semibold text-lg">Online marketing</h3>
+              <p class="text-gray-600 text-justify">
+                Tudatos kampányok és CRO a konverzióért.
+              </p>
+              <a href="#contact" class="inline-block mt-2 text-[#ebaf73] hover:text-[#e49b50]"
+                aria-label="Ajánlatkérés – Online marketing">Ajánlatot kérek!</a>
+            </div>
               </div>
             </div>
           </div>
@@ -228,7 +450,8 @@
             <!-- Gomb -->
             <div class="mt-8">
               <a href="#"
-                class="bg-[#2867a2] text-white hover:bg-[#1f4f7e] block w-full px-10 py-4 rounded-full text-lg font-medium transition-all duration-300 text-center">
+                class="bg-[#2867a2] text-white hover:bg-[#1f4f7e] block w-full px-10 md:mt-12 py-4 rounded-full text-lg font-medium transition-all duration-300 text-center"
+                aria-label="További részletek - Szolgáltatások">
                 Bővebben...
               </a>
             </div>
@@ -296,7 +519,7 @@
     </section>
 
     <!--SUBSERVICES----------------->
-    <section id="timeline" class="relative bg-[#2867a2] py-24 px-4 sm:px-6 lg:px-8 text-white">
+    <section id="sub-services" class="relative bg-[#2867a2] py-24 px-4 sm:px-6 lg:px-8 text-white">
       <div class="max-w-7xl mx-auto relative">
         <div class="mb-16 text-center">
           <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
@@ -315,16 +538,20 @@
         <div class="space-y-24">
 
           <!-- 1. blokk -->
-          <div class="grid md:grid-cols-2 items-center gap-12 relative z-10">
+          <div id="service-tech" class="grid md:grid-cols-2 items-center gap-12 relative z-10">
             <!-- Kép balra -->
             <div class="timeline-img hidden md:block opacity-0 translate-x-[-50px]">
-              <img src="/assets/images/weboldalkeszites.webp" alt="Weboldal készítés" class="rounded-xl shadow-xl">
-            </div>
+          <img src="/assets/images/weboldalkeszites.webp"
+              alt="Weboldalkészítés – üzleti referencia"
+              width="655" height="480"
+              loading="lazy" decoding="async"
+              class="rounded-xl shadow-xl">            
+              </div>
             <!-- Szöveg jobbra -->
             <div class="timeline-text opacity-0 translate-x-[50px]">
               <h3 class="text-2xl font-bold mb-4">Technikai tanácsadás</h3>
               <p class="text-lg leading-relaxed text-justify">Segítek átlátni, hogy mi hogyan működik a háttérben: tárhely, domain, weboldal, e-mail, DNS, Google, biztonság, gyorsaság, mindaz, amitől egy online rendszer stabil és megbízható lesz. Egyszerűen és érthetően.</p>
-                            <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                            <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full" aria-label="Ajánlatkérés: Technikai tanácsadás">
                   Erre van szükségem!
                 </button>
 
@@ -332,51 +559,71 @@
             <!-- Mobil: szöveg + kép -->
             <div class="md:hidden space-y-4">
               <div class="timeline-img-mobile opacity-0 translate-y-[50px]">
-                <img src="/assets/images/weboldalkeszites.webp" class="rounded-xl shadow-xl" alt="">
-              </div>
+          <img src="/assets/images/weboldalkeszites.webp"
+              alt="Weboldalkészítés – üzleti referencia"
+              width="655" height="480"
+              loading="lazy" decoding="async"
+              class="rounded-xl shadow-xl">  
+             </div>
             </div>
           </div>
 
           <!-- 2. blokk -->
-          <div class="grid md:grid-cols-2 items-center gap-12 relative z-10">
+          <div id="service-seo" class="grid md:grid-cols-2 items-center gap-12 relative z-10">
             <!-- Szöveg balra -->
             <div class="timeline-text opacity-0 translate-x-[-50px]">
               <h3 class="text-2xl font-bold mb-4">Keresőoptimalizálás</h3>
               <p class="text-lg leading-relaxed text-justify">Technikai és tartalmi SEO egyben: gyors betöltés, reszponzivitás, Google-barát szerkezet, kulcsszókutatás, szövegírás, meta adatok és keresőbarát struktúra. A cél: első oldalas megjelenés, több organikus forgalom.</p>
-                                        <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                                        <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full" aria-label="Ajánlatkérés: Keresőoptimalizálás">
                   Erre van szükségem!
                 </button>
             </div>
             <!-- Kép jobbra -->
             <div class="timeline-img hidden md:block opacity-0 translate-x-[50px]">
-              <img src="/assets/images/seoestartalom.webp" alt="Struktúra" class="rounded-xl shadow-xl">
+              <img src="/assets/images/weboldalkeszites.webp"
+              alt="Weboldalkészítés – üzleti referencia"
+              width="655" height="480"
+              loading="lazy" decoding="async"
+              class="rounded-xl shadow-xl">  
             </div>
             <!-- Mobil -->
             <div class="md:hidden space-y-4">
               <div class="timeline-img-mobile opacity-0 translate-y-[50px]">
-                <img src="/assets/images/seoestartalom.webp" class="rounded-xl shadow-xl" alt="">
+              <img src="/assets/images/weboldalkeszites.webp"
+              alt="Weboldalkészítés – üzleti referencia"
+              width="655" height="480"
+              loading="lazy" decoding="async"
+              class="rounded-xl shadow-xl"> 
               </div>
             </div>
           </div>
 
           <!-- 3. blokk -->
-          <div class="grid md:grid-cols-2 items-center gap-12 relative z-10">
+          <div id="service-automation" class="grid md:grid-cols-2 items-center gap-12 relative z-10">
             <!-- Kép balra -->
             <div class="timeline-img hidden md:block opacity-0 translate-x-[-50px]">
-              <img src="/assets/images/technikaitanacsadas.webp" alt="Tanácsadás" class="rounded-xl shadow-xl">
+              <img src="/assets/images/weboldalkeszites.webp"
+              alt="Weboldalkészítés – üzleti referencia"
+              width="655" height="480"
+              loading="lazy" decoding="async"
+              class="rounded-xl shadow-xl">  
             </div>
             <!-- Szöveg jobbra -->
             <div class="timeline-text opacity-0 translate-x-[50px]">
               <h3 class="text-2xl font-bold mb-4">Automatizálás | AI</h3>
               <p class="text-lg leading-relaxed text-justify">Automatizálom a monoton, időrabló folyamatokat: űrlapok, e-mailek, CRM, naptár, számlázás, chatbot. Ha kell, mesterséges intelligenciával turbózva. Így Te csak a fontos döntésekre tudsz majd koncentrálni, a rendszer elvégzi a többit.</p>
-                                        <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full">
+                                        <button class="mt-2 bg-[#ebaf73] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e49b50] transition w-full" aria-label="Automatizálás | AI">
                   Erre van szükségem!
                 </button>
             </div>
             <!-- Mobil -->
             <div class="md:hidden space-y-4">
               <div class="timeline-img-mobile opacity-0 translate-y-[50px]">
-                <img src="/assets/images/technikaitanacsadas.webp" class="rounded-xl shadow-xl" alt="">
+              <img src="/assets/images/weboldalkeszites.webp"
+              alt="Weboldalkészítés – üzleti referencia"
+              width="655" height="480"
+              loading="lazy" decoding="async"
+              class="rounded-xl shadow-xl">  
               </div>
             </div>
           </div>
@@ -387,7 +634,7 @@
     </section>
 
 <!-- STACKED PAKLI SZEKCIÓ -->
-  <section class="bg-gradient-to-b from-[#2867a2] to-white text-gray-900 py-24 px-4 sm:px-6 lg:px-8">
+  <section id="developement" class="bg-gradient-to-b from-[#2867a2] to-white text-gray-900 py-24 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-4xl font-extrabold mb-4 text-center text-white">Amikor a weboldal csak a kezdet!</h2>
 <h3 class="text-lg md:text-xl text-center text-gray-200 max-w-2xl mx-auto mb-12">
@@ -401,9 +648,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
           <!-- Kép + galéria -->
           <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
             <div class="relative w-full h-full gallery">
-              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
-              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
-              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
+              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1" width="655" height="480">
+              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2" width="655" height="480">
+              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3" width="655" height="480">
 
               <!-- Bal nyíl -->
               <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
@@ -427,9 +674,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
           <!-- Kép + galéria -->
           <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
             <div class="relative w-full h-full gallery">
-              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
-              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
-              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
+              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1" width="655" height="480">
+              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2" width="655" height="480">
+              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3" width="655" height="480">
 
               <!-- Bal nyíl -->
               <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
@@ -453,9 +700,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
           <!-- Kép + galéria -->
           <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
             <div class="relative w-full h-full gallery">
-              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
-              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
-              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
+              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1" width="655" height="480">
+              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2" width="655" height="480">
+              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3" width="655" height="480">
 
               <!-- Bal nyíl -->
               <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
@@ -479,9 +726,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
           <!-- Kép + galéria -->
           <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
             <div class="relative w-full h-full gallery">
-              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
-              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
-              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
+              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1" width="655" height="480">
+              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2" width="655" height="480">
+              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3" width="655" height="480">
 
               <!-- Bal nyíl -->
               <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
@@ -505,9 +752,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
           <!-- Kép + galéria -->
           <div class="md:col-span-2 relative group overflow-hidden h-[300px] md:h-full">
             <div class="relative w-full h-full gallery">
-              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1">
-              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2">
-              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3">
+              <img src="/assets/images/weboldalkeszites.webp" class="gallery-image w-full h-full object-cover transition duration-500 ease-in-out" alt="Weboldal kép 1" width="655" height="480">
+              <img src="/assets/images/seoestartalom.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 2" width="655" height="480">
+              <img src="/assets/images/technikaitanacsadas.webp" class="gallery-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition duration-500 ease-in-out" alt="Weboldal kép 3" width="655" height="480">
 
               <!-- Bal nyíl -->
               <button class="prev absolute top-1/2 left-2 -translate-y-1/2 text-gray-700 hover:text-gray-900 transition z-10 text-4xl leading-none">
@@ -536,7 +783,7 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
     <section id="packages" class="bg-gradient-to-b from-white to-gray-200 py-24 px-4 sm:px-6 lg:px-8 text-gray-900">
       <div class="max-w-7xl mx-auto text-center mb-16">
         <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Nem tudod, hol kezdjünk?</h2>
-        <h3p class="text-lg text-gray-600 max-w-2xl mx-auto">Válaszd gondosan összeállított csomagajánlataim egyikét és biztosan nem lősz mellé! Bármilyen szinten is gondolkodsz</h3>
+        <h3 class="text-lg text-gray-600 max-w-2xl mx-auto">Válaszd gondosan összeállított csomagajánlataim egyikét és biztosan nem lősz mellé! Bármilyen szinten is gondolkodsz</h3>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
@@ -548,9 +795,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
             <p class="text-gray-600 mb-6">Ha még csak most indulsz, és az alapokat szeretnéd stabilan lefektetni.</p>
             <ul class="text-left space-y-3 text-sm">
               <li>✅ Konzultáció és célfeltárás</li>
-              <li>✅ Egylapos bemutatkozó weboldal</li>
+              <li>✅ <a href="#service-weboldalkeszites" class="underline">Egylapos bemutatkozó weboldal</a></li>
               <li>✅ Saját domain + tárhely beállítás</li>
-              <li>✅ Alap arculat (színek, betűtípusok, logóhely)</li>
+              <li>✅ <a href="#service-arculattervezes" class="underline">Alap arculat</a> (színek, betűtípusok, logóhely)</li>
               <li>✅ Kapcsolatfelvételi űrlap</li>
               <li>✅ Mobilra optimalizálás</li>
             </ul>
@@ -597,7 +844,7 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
     </section>
 
     <!--PARALLAX CTA------------------------>
-    <section class="relative bg-fixed bg-center bg-cover text-white" style="background-image: url('/assets/images/parallax-cta.webp');">
+    <section id="parallax cta" class="relative bg-fixed bg-center bg-cover text-white" style="background-image: url('/assets/images/parallax-cta.webp');">
       <div class="bg-black/60 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center">
           <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug">
@@ -631,8 +878,9 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
                   Hogyan növeld az online konverziót?
                 </a>
               </h3>
-              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Tippek és eszközök az online konverziós arány növelésére, a látogatók ügyfelekké alakításához.</p>
+              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Tippek és eszközök az online konverziós arány növelésére, a látogatók ügyfelekké alakításához. </p>
             </div>
+            <a href="#service-online-marketing" class="underline mt-4 text-sm">Kapcsolódó szolgáltatás: Online marketing</a>
           </article>
 
           <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
@@ -649,6 +897,7 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
               </h3>
               <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Ismerd meg, hogyan segíthet a SEO több ügyfelet hozni az oldaladra és növelni a bevételedet.</p>
             </div>
+            <a href="#service-seo" class="underline mt-4 text-sm">Kapcsolódó szolgáltatás: Keresőoptimalizálás</a>
           </article>
 
           <article class="flex max-w-xl flex-col items-start justify-between float-up animate">
@@ -665,6 +914,7 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
               </h3>
               <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">Egyszerű lépések és eszközök a felhasználói élmény fejlesztésére, hogy ügyfeleid szívesen visszatérjenek az oldaladra.</p>
             </div>
+            <a href="#service-arculattervezes" class="underline mt-4 text-sm">Kapcsolódó szolgáltatás: Arculattervezés</a>
           </article>
 
         </div>
@@ -676,6 +926,7 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
     </div>
 
     </section>
+    </main>
 
     <!-- TECH STACK SECTION -->
     <section class="bg-gray-200/50 py-4 relative">
@@ -683,19 +934,19 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
           <div class="overflow-x-auto hide-scrollbar">
             <div class="flex items-center justify-center lg:justify-center space-x-10 px-6 w-max lg:mx-auto h-8">
 
-              <img src="/assets/techstack/html5.svg" alt="HTML5 logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/css3.svg" alt="CSS3 logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/javascript.svg" alt="JavaScript logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/react.svg" alt="React logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/nextjs.svg" alt="Next.js logó" class="h-8 bg-white p-1 rounded" loading="lazy">
-              <img src="/assets/techstack/php.svg" alt="PHP logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/nodejs.svg" alt="Node.js logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/figma.svg" alt="Figma logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/Canva.svg" alt="Canva logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/meta.webp" alt="Meta logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/google_ads.svg" alt="Google Ads logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/Notion.webp" alt="Notion logó" class="h-8" loading="lazy">
-              <img src="/assets/techstack/openai.svg" alt="OpenAI logó" class="h-8" loading="lazy">
+              <img src="/assets/techstack/html5.svg" alt="HTML5 logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/css3.svg" alt="CSS3 logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/javascript.svg" alt="JavaScript logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/react.svg" alt="React logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/nextjs.svg" alt="Next.js logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/php.svg" alt="PHP logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/nodejs.svg" alt="Node.js logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/figma.svg" alt="Figma logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/Canva.svg" alt="Canva logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/meta.webp" alt="Meta logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/google_ads.svg" alt="Google Ads logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/Notion.webp" alt="Notion logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
+              <img src="/assets/techstack/openai.svg" alt="OpenAI logó" height="32" class="w-8 h-8" loading="lazy" decoding="async">
 
             </div>
           </div>
@@ -713,7 +964,48 @@ Teljes körű webfejlesztés, landingtől a komplex rendszerekig
 
 <script src="/js/index.js" defer></script>
 <script src="/js/header-scripts.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  </body>
+
+<script>
+  (function () {
+  function scrollToHashCenter(hash, smooth = true) {
+    if (!hash) return;
+    const el = document.querySelector(hash);
+    if (!el) return;
+
+    // Középre igazított görgetés
+    el.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', block: 'center' });
+  }
+
+  // Oldalbetöltéskor (ha van hash)
+  window.addEventListener('load', function () {
+    if (location.hash) {
+      // várunk 1 frame-et, hogy minden layout kész legyen
+      requestAnimationFrame(() => scrollToHashCenter(location.hash, false));
+    }
+  });
+
+  // Hash változáskor
+  window.addEventListener('hashchange', function () {
+    scrollToHashCenter(location.hash);
+  });
+
+  // Belső linkek elfogása (csak ugyanarra az oldalra mutatók)
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a[href^="#"], a[href^="/#"]');
+    if (!a) return;
+
+    // Ugyanazon oldal?
+    const url = new URL(a.href, location.origin);
+    if (url.pathname === location.pathname) {
+      e.preventDefault();
+      history.pushState(null, '', url.hash);
+      scrollToHashCenter(url.hash);
+    }
+    // ha másik oldalra mutat (pl. /aloldal#id), hagyjuk a navigációt, és a fenti onload kezelni fogja
+  });
+})();
+
+</script>
+
+</body>
 </html>
